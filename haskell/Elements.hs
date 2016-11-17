@@ -8,20 +8,30 @@ import Lucid.Html5
 import Types
 
 
-blocks_ :: Monad m => [Attribute] -> HtmlT m a -> HtmlT m a
-blocks_ attributes = with (makeElement "div") ([ class_ "blocks" ] ++ attributes)
+blocks_ :: Element a
+blocks_ attributes =
+  with
+    (makeElement "div")
+    ([ class_ "blocks" ] ++ attributes)
 
 
-blocksRow_ :: Monad m => [Attribute] -> HtmlT m a -> HtmlT m a
-blocksRow_ attributes = with (makeElement "div") ([ class_ "blocks__row" ] ++ attributes)
+blocksRow_ :: Element a
+blocksRow_ attributes =
+  with
+    (makeElement "div")
+    ([ class_ "blocks__row" ] ++ attributes)
 
 
-container_ :: Monad m => [Attribute] -> HtmlT m a -> HtmlT m a
-container_ attributes = with (makeElement "div") ([ class_ "container" ] ++ attributes)
+container_ :: Element a
+container_ attributes =
+  with
+    (makeElement "div")
+    ([ class_ "container" ] ++ attributes)
 
 
-markdown_ :: Monad m => [Attribute] -> HtmlT m a -> HtmlT m a
-markdown_ _ = (makeElement "div")
+markdown_ :: Element a
+markdown_ _ =
+  (makeElement "div")
 
 
 use_ :: Html ()
