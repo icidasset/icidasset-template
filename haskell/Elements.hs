@@ -28,5 +28,9 @@ container_ attributes children =
     (children)
 
 
+markdown_ :: Element
+markdown_ _ children = children
+
+
 use_ :: Html ()
 use_ = makeElementNoEnd "use"
