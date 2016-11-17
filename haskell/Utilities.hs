@@ -1,4 +1,4 @@
-module Moto.Utilities
+module Utilities
   ( dictionary
   , lsequence
   , process
@@ -52,9 +52,7 @@ lsequence list =
 
 process :: [Pattern] -> IO Dictionary
 process patterns =
-  rootDir
-    >>= list patterns
-    >>= Shikensu.Contrib.IO.read
+  rootDir >>= list patterns
 
 
 

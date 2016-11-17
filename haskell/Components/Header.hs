@@ -1,28 +1,30 @@
-module Templates.Header where
+module Components.Header where
 
+import Data.Monoid ((<>))
 import Elements
 import Lucid.Base (Html)
 import Lucid.Html5
+import Types
 
 
 template :: Template
 template obj _ =
   header_
     [ class_ "header" ]
-    [ container_
+    ( container_
         []
-        [ div_
+        ( div_
             [ class_ "header__col header__col--left" ]
-            [ a_
+            ( a_
                 [ href_ "TODO" ]
-                [ "I.A." ]
-            ]
+                ( "I.A." )
+            )
 
-        , div_
+        <> div_
             [ class_ "header__col header__col--right" ]
-            [ span_
+            ( span_
                 []
-                [ "Steven Vandevelde" ]
-            ]
-        ]
-    ]
+                ( "Steven Vandevelde" )
+            )
+        )
+    )

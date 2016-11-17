@@ -5,31 +5,23 @@ module Elements where
 
 import Lucid.Base
 import Lucid.Html5
+import Types
 
 
-blocks_ :: Element
-blocks_ attributes children =
-  div_
-    (attributes ++ [class_ "blocks"])
-    (children)
+blocks_ :: Monad m => [Attribute] -> HtmlT m a -> HtmlT m a
+blocks_ attributes = with (makeElement "div") ([ class_ "blocks" ] ++ attributes)
 
 
-blocksRow_ :: Element
-blocksRow_ attributes children =
-  div_
-    (attributes ++ [class_ "blocks__row"])
-    (children)
+blocksRow_ :: Monad m => [Attribute] -> HtmlT m a -> HtmlT m a
+blocksRow_ attributes = with (makeElement "div") ([ class_ "blocks__row" ] ++ attributes)
 
 
-container_ :: Element
-container_ attributes children =
-  div_
-    (attributes ++ [class_ "container"])
-    (children)
+container_ :: Monad m => [Attribute] -> HtmlT m a -> HtmlT m a
+container_ attributes = with (makeElement "div") ([ class_ "container" ] ++ attributes)
 
 
-markdown_ :: Element
-markdown_ _ children = children
+markdown_ :: Monad m => [Attribute] -> HtmlT m a -> HtmlT m a
+markdown_ _ = (makeElement "div")
 
 
 use_ :: Html ()

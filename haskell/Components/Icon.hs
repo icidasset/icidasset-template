@@ -1,8 +1,10 @@
-module Templates.Header where
+module Components.Icon where
 
+import Data.Monoid ((<>))
 import Elements
 import Lucid.Base (Html)
 import Lucid.Html5
+import Types
 
 
 template :: Template
@@ -12,8 +14,7 @@ template obj _ =
   in
     span_
       [ class_ "icon icon--" ++ name ]
-      [ svg_
+      ( svg_
           [ class_ "icon__cnt" ]
-          [ use_ [ makeAttribute "xlink:href" (path ++ "#" ++ name) ]
-          ]
-      ]
+          ( use_ [ makeAttribute "xlink:href" (path ++ "#" ++ name) ] )
+      )

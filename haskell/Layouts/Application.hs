@@ -1,53 +1,53 @@
-module Templates.Layouts.Application where
+module Layouts.Application where
 
-import Components
+import Components.Header
+import Data.Monoid ((<>))
 import Elements
 import Lucid.Base (Html)
 import Lucid.Html5
+import Types
+
+import qualified Data.Text as Text (append)
 
 
 template :: Template
 template obj children =
-  [ doctype_
-  , html_
+  ( doctype_ <> html_
       []
-      [
-        head
+      ( head_
           []
-          [ meta_ [ charset_ "utf-8" ]
-          , meta_ [ httpEquiv_ "Content-Type" content_ "text/html; charset=utf-8" ]
-          , meta_ [ httpEquiv_ "X-UA-Compatible" content_ "IE=edge" ]
-          , meta_ [ name_ "viewport", content_ "width=device-width, initial-scale=1" ]
+          (    meta_ [ charset_ "utf-8" ]
+            <> meta_ [ httpEquiv_ "Content-Type", content_ "text/html; charset=utf-8" ]
+            <> meta_ [ httpEquiv_ "X-UA-Compatible", content_ "IE=edge" ]
+            <> meta_ [ name_ "viewport", content_ "width=device-width, initial-scale=1" ]
 
-          , title_ [] [ "TODO" ]
+            <> title_ [] ( "TODO" )
 
-          , link_
-              [ rel_ "stylesheet"
-              , href_ "TODO"
-              ]
+            <> link_
+                [ rel_ "stylesheet"
+                , href_ "TODO"
+                ]
 
-          , link_
-              [ rel_ "stylesheet"
-              , href_ "https://fonts.googleapis.com/css?family=" ++
-                      "Playfair+Display|Montserrat:400,700|Lora:400,700,400italic,700italic"
-              ]
+            <> link_
+                [ rel_ "stylesheet"
+                , href_ ( Text.append
+                            "https://fonts.googleapis.com/css?family="
+                            "Playfair+Display|Montserrat:400,700|Lora:400,700,400italic,700italic"
+                        )
+                ]
 
-          , faviconsTemplate obj []
-          ]
+            <> faviconsTemplate obj ""
+          )
 
-      , body
+      <> body_
           [ class_ "TODO - Specify collection" ]
-          [ Components.Header.template
-
-          , children
-          ]
-      ]
-  ]
+          ( Components.Header.template obj "" <> children )
+      )
+  )
 
 
 faviconsTemplate :: Template
-faviconsTemplate obj =
-  []
+faviconsTemplate obj children = children
 
 
 {-| TODO

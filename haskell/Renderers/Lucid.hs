@@ -3,9 +3,13 @@ module Renderers.Lucid where
 import Data.ByteString (ByteString)
 import Data.Maybe as Maybe (fromJust)
 import Data.Text.Encoding (decodeUtf8, encodeUtf8)
+import Flow
 import Shikensu.Types
+import Types
 
-import qualified Data.HashMap.Strict as HashMap
+import qualified Data.ByteString.Lazy as BS.Lazy (toStrict)
+import qualified Data.HashMap.Strict as HashMap (lookup)
+import qualified Lucid.Base as Lucid (renderBS)
 
 
 
@@ -19,12 +23,12 @@ catalogRenderer catalog def =
       |> HashMap.lookup (basename def)
       |> Maybe.fromJust
   in
-    render (metadata def) template
+    renderer template def
 
 
-renderer :: Metadata -> Template -> Maybe ByteString
-renderer obj template =
-  template obj
+renderer :: Template -> Definition -> Maybe ByteString
+renderer template def =
+  template (metadata def) ""
     |> Lucid.renderBS
     |> BS.Lazy.toStrict
     |> Just
