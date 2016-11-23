@@ -5,6 +5,7 @@ module Utilities
 
   , (!)
   , (?)
+  , (??)
   , (<&>)
   ) where
 
@@ -67,13 +68,16 @@ process patterns =
 (!) deps = fromJust . fromDynamic . fromJust . ((flip List.lookup) deps)
 
 
-(?) :: (FromJSON a, ToJSON a) => Metadata -> Text -> a
+(?) :: (FromJSON a, ToJSON a) => Metadata -> Text -> Maybe a
 (?) obj key =
   key
     |> (flip HashMap.lookup) obj
-    |> fromJust
-    |> fromJSON
-    |> fromResult
+    |> fmap fromJSON
+    |> fmap fromResult
+
+
+(??) :: (FromJSON a, ToJSON a) => Metadata -> Text -> a
+(??) obj key = fromJust (obj ? key)
 
 
 (<&>) :: Functor f => f a -> (a -> b) -> f b

@@ -5,17 +5,22 @@ import Data.Aeson (fromJSON)
 import Data.Monoid ((<>))
 import Data.Text (Text)
 import Elements
-import Lucid.Base (Html)
+import Flow
+import Lucid.Base (Html, toHtml)
 import Lucid.Html5
 import Types
-import Utilities ((?))
+import Utilities ((?), (??))
 
 import qualified Data.Text as Text (append)
 
 
 template :: Template
 template obj children =
-  ( doctype_ <> html_
+  let
+    pathToRoot = obj ?? "pathToRoot" :: Text
+    title = obj ? "title" :: Maybe Text
+  in
+    doctype_ <> html_
       []
       ( head_
           []
@@ -24,11 +29,25 @@ template obj children =
             <> meta_ [ httpEquiv_ "X-UA-Compatible", content_ "IE=edge" ]
             <> meta_ [ name_ "viewport", content_ "width=device-width, initial-scale=1" ]
 
-            <> title_ [] ( "TODO" )
+            <> title_
+                (
+                  Text.append
+                    (
+                      case title of
+                        Just x -> Text.append x " &ndash; "
+                        Nothing -> ""
+                    )
+                    ("I.A.")
+
+                  |> toHtml
+                )
 
             <> link_
                 [ rel_ "stylesheet"
-                , href_ "application.css" -- TODO
+                , href_ ( Text.append
+                            pathToRoot
+                            "application.css"
+                        )
                 ]
 
             <> link_
@@ -46,13 +65,12 @@ template obj children =
           [ class_ "TODO - Specify collection" ]
           ( Components.Header.template obj "" <> children )
       )
-  )
 
 
 faviconsTemplate :: Template
 faviconsTemplate obj children =
   let
-    pathToRoot = obj ? "pathToRoot" :: Text
+    pathToRoot = obj ?? "pathToRoot" :: Text
     relativeHref_ = \p -> href_ (Text.append pathToRoot p)
   in
   link_
