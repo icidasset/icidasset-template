@@ -1,0 +1,47 @@
+.blocks {
+
+  /* add margin-top to blocks on mobile */
+  & .blocks__row .block {
+    margin: 5gr 0 0;
+
+    @media (--small) {
+      margin: 0;
+    }
+  }
+
+  /* make previously defined margin a bit smaller if it's a "filler" block */
+  & .block + .block--filler {
+    margin-top: 1gr;
+
+    @media (--small) {
+      margin-top: 0;
+    }
+  }
+
+  /* instead of setting a margin-top on each block, set it on the row */
+  /* + enable flexbox  */
+  & .blocks__row {
+    @media (--small) {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 5gr 0 0;
+
+      &.has-no-margin-top {
+        margin-top: 0;
+      }
+    }
+  }
+
+  /* margin between blocks on the same row */
+  & .blocks__row .block:first-child {
+    @media (--small) {
+      margin-right: 1gr;
+    }
+
+    @media (--medium) {
+      margin-right: 2gr;
+    }
+  }
+
+
+}

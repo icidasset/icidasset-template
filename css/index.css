@@ -8,5 +8,7 @@
 @import "base/queries";
 @import "base/base";
 
+@import "components/block";
+@import "components/blocks";
 @import "components/container";
 @import "components/header";
