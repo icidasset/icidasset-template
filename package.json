@@ -1,0 +1,14 @@
+{
+  "name": "icidasset-template",
+  "version": "1.0.0",
+  "dependencies": {
+    "normalize.css": "~> 5.0.0",
+    "postcss": "~> 5.2.5",
+    "postcss-cssnext": "~> 2.8.0",
+    "postcss-custom-units": "~> 0.1.1",
+    "postcss-import": "~> 8.2.0",
+    "postcss-mixins": "~> 5.4.0",
+    "postcss-remify": "~> 1.0.1",
+    "postcss-simple-vars": "~> 3.0.0"
+  }
+}

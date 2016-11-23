@@ -16,7 +16,7 @@ template obj _ =
         ( div_
             [ class_ "header__col header__col--left" ]
             ( a_
-                [ href_ "TODO" ]
+                [ href_ "TODO", class_ "header__logo" ]
                 ( "I.A." )
             )
 

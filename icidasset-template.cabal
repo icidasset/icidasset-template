@@ -1,0 +1,45 @@
+name: icidasset-template
+version: 1.0.0
+
+build-type: Simple
+cabal-version: >= 1.10
+
+author: Steven Vandevelde
+maintainer: icid.asset@gmail.com
+
+
+library
+  default-language:
+    Haskell2010
+
+  default-extensions:
+    ExtendedDefaultRules
+    OverloadedStrings
+
+  hs-source-dirs:
+    system,
+    templates
+
+  exposed-modules:
+    Components.Header
+    Components.Icon
+    Elements
+    Layouts.Application
+    Layouts.Writing
+    Renderers.Lucid
+    Renderers.Markdown
+    Shikensu.Functions
+    Types
+    Utilities
+
+  build-depends:
+    aeson == 0.11.*,
+    base,
+    bytestring == 0.10.*,
+    cmark == 0.5.*,
+    directory == 1.*,
+    flow == 1.*,
+    lucid == 2.9.*,
+    shikensu == 0.1.*,
+    text == 1.*,
+    unordered-containers == 0.2.*

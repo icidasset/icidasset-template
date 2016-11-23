@@ -34,5 +34,5 @@ markdown_ _ =
   (makeElement "div")
 
 
-use_ :: Html ()
-use_ = makeElementNoEnd "use"
+use_ :: [Attribute] -> Html ()
+use_ = with (makeElementNoEnd "use")

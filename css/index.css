@@ -1,7 +1,12 @@
-@import "abstract/grid.css";
-@import "abstract/variables.css";
-@import "abstract/mixins.css";
+@import "normalize.css/normalize.css";
 
-@import "base/custom-selectors.css";
-@import "base/queries.css";
-@import "base/base.css";
+@import "abstract/grid";
+@import "abstract/variables";
+@import "abstract/mixins";
+
+@import "base/custom-selectors";
+@import "base/queries";
+@import "base/base";
+
+@import "components/container";
+@import "components/header";

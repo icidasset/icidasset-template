@@ -17,27 +17,11 @@ A generic template for my personal projects.
 
 ### Haskell
 
-1. Add `icidasset-template/haskell` to `hs-source-dirs` in the cabal file.
-2. Add dependencies to the cabal file.
+1. Add `./icidasset-template` to `packages` in the `stack.yaml` file.
 3. Use the Haskell modules as normal.
 
 
 ### Css
 
-1. Add dependencies to `package.json` in the root directory (see dependencies below).
-2. Import the template css file (e.g. `@import "PATHTOROOT/icidasset-template/css/index.css"`)
-
-#### Dependencies
-
-```json
-{
-  "normalize.css": "~> 5.0.0",
-  "postcss": "~> 5.2.5",
-  "postcss-cssnext": "~> 2.8.0",
-  "postcss-custom-units": "~> 0.1.1",
-  "postcss-import": "~> 8.2.0",
-  "postcss-mixins": "~> 5.4.0",
-  "postcss-remify": "~> 1.0.1",
-  "postcss-simple-vars": "~> 3.0.0",
-}
-```
+1. Add `"icidasset-template": "file:./icidasset-template"` dependency to `package.json` in the root directory.
+2. Import the template css file (e.g. `@import "PATHTOROOT/icidasset-template/css/index"`)
