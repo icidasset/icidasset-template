@@ -1,5 +1,6 @@
 module Components.Header where
 
+import Attributes
 import Data.Monoid ((<>))
 import Elements
 import Lucid.Base (Html)
@@ -16,7 +17,7 @@ template obj _ =
         ( div_
             [ class_ "header__col header__col--left" ]
             ( a_
-                [ href_ "TODO", class_ "header__logo" ]
+                [ relativeHref_ obj "", class_ "header__logo" ]
                 ( "I.A." )
             )
 

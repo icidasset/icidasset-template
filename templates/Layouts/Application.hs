@@ -1,5 +1,6 @@
 module Layouts.Application where
 
+import Attributes
 import Components.Header
 import Data.Aeson (fromJSON)
 import Data.Monoid ((<>))
@@ -17,7 +18,6 @@ import qualified Data.Text as Text (append)
 template :: Template
 template obj children =
   let
-    pathToRoot = obj ?? "pathToRoot" :: Text
     title = obj ? "title" :: Maybe Text
   in
     doctype_ <> html_
@@ -44,10 +44,7 @@ template obj children =
 
             <> link_
                 [ rel_ "stylesheet"
-                , href_ ( Text.append
-                            pathToRoot
-                            "application.css"
-                        )
+                , relativeHref_ obj "application.css"
                 ]
 
             <> link_
@@ -69,96 +66,92 @@ template obj children =
 
 faviconsTemplate :: Template
 faviconsTemplate obj children =
-  let
-    pathToRoot = obj ?? "pathToRoot" :: Text
-    relativeHref_ = \p -> href_ (Text.append pathToRoot p)
-  in
   link_
     [ rel_ "apple-touch-icon"
     , sizes_ "57x57"
-    , relativeHref_ "images/favicons/apple-touch-icon-57x57.png" ]
+    , relativeHref_ obj "images/favicons/apple-touch-icon-57x57.png" ]
 
   <> link_
     [ rel_ "apple-touch-icon"
     , sizes_ "60x60"
-    , relativeHref_ "images/favicons/apple-touch-icon-60x60.png" ]
+    , relativeHref_ obj "images/favicons/apple-touch-icon-60x60.png" ]
 
   <> link_
     [ rel_ "apple-touch-icon"
     , sizes_ "72x72"
-    , relativeHref_ "images/favicons/apple-touch-icon-72x72.png" ]
+    , relativeHref_ obj "images/favicons/apple-touch-icon-72x72.png" ]
 
   <> link_
     [ rel_ "apple-touch-icon"
     , sizes_ "76x76"
-    , relativeHref_ "images/favicons/apple-touch-icon-76x76.png" ]
+    , relativeHref_ obj "images/favicons/apple-touch-icon-76x76.png" ]
 
   <> link_
     [ rel_ "apple-touch-icon"
     , sizes_ "114x114"
-    , relativeHref_ "images/favicons/apple-touch-icon-114x114.png" ]
+    , relativeHref_ obj "images/favicons/apple-touch-icon-114x114.png" ]
 
   <> link_
     [ rel_ "apple-touch-icon"
     , sizes_ "120x120"
-    , relativeHref_ "images/favicons/apple-touch-icon-120x120.png" ]
+    , relativeHref_ obj "images/favicons/apple-touch-icon-120x120.png" ]
 
   <> link_
     [ rel_ "apple-touch-icon"
     , sizes_ "144x144"
-    , relativeHref_ "images/favicons/apple-touch-icon-144x144.png" ]
+    , relativeHref_ obj "images/favicons/apple-touch-icon-144x144.png" ]
 
   <> link_
     [ rel_ "apple-touch-icon"
     , sizes_ "152x152"
-    , relativeHref_ "images/favicons/apple-touch-icon-152x152.png" ]
+    , relativeHref_ obj "images/favicons/apple-touch-icon-152x152.png" ]
 
   <> link_
     [ rel_ "apple-touch-icon"
     , sizes_ "180x180"
-    , relativeHref_ "images/favicons/apple-touch-icon-180x180.png" ]
+    , relativeHref_ obj "images/favicons/apple-touch-icon-180x180.png" ]
 
   -- Generic
   <> link_
     [ rel_ "icon"
     , sizes_ "16x16"
     , type_ "image/png"
-    , relativeHref_ "images/favicons/favicon-16x16.png" ]
+    , relativeHref_ obj "images/favicons/favicon-16x16.png" ]
 
   <> link_
     [ rel_ "icon"
     , sizes_ "32x32"
     , type_ "image/png"
-    , relativeHref_ "images/favicons/favicon-32x32.png" ]
+    , relativeHref_ obj "images/favicons/favicon-32x32.png" ]
 
   <> link_
     [ rel_ "icon"
     , sizes_ "96x96"
     , type_ "image/png"
-    , relativeHref_ "images/favicons/favicon-96x96.png" ]
+    , relativeHref_ obj "images/favicons/favicon-96x96.png" ]
 
   <> link_
     [ rel_ "icon"
     , sizes_ "194x194"
     , type_ "image/png"
-    , relativeHref_ "images/favicons/favicon-194x194.png" ]
+    , relativeHref_ obj "images/favicons/favicon-194x194.png" ]
 
   -- Android
   <> link_
     [ rel_ "icon"
     , sizes_ "192x192"
     , type_ "image/png"
-    , relativeHref_ "images/favicons/android-chrome-192x192.png" ]
+    , relativeHref_ obj "images/favicons/android-chrome-192x192.png" ]
 
   -- Manifest
   <> link_
     [ rel_ "manifest"
-    , relativeHref_ "images/favicons/manifest.json" ]
+    , relativeHref_ obj "images/favicons/manifest.json" ]
 
   -- Ico format
   <> link_
     [ rel_ "shortcut icon"
-    , relativeHref_ "images/favicons/favicon.ico" ]
+    , relativeHref_ obj "images/favicons/favicon.ico" ]
 
   -- Meta
   <> meta_

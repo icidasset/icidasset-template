@@ -21,6 +21,7 @@ library
     templates
 
   exposed-modules:
+    Attributes
     Components.Header
     Components.Icon
     Elements
