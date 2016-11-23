@@ -4,21 +4,24 @@ module Utilities
   , process
 
   , (!)
+  , (?)
   , (<&>)
   ) where
 
 
+import Data.Aeson (FromJSON, ToJSON, Result(..), Value, fromJSON)
 import Data.Dynamic (Dynamic, Typeable, fromDynamic)
 import Data.Maybe (fromJust)
 import Data.Text (Text)
 import Flow
 import Shikensu (list, makeDefinition, makeDictionary)
 import Shikensu.Contrib.IO (read)
-import Shikensu.Types (Dictionary, Pattern)
+import Shikensu.Types (Dictionary, Metadata, Pattern)
 import System.Directory (canonicalizePath)
 
 import qualified Data.Aeson as Aeson (ToJSON, encode)
 import qualified Data.ByteString.Lazy as ByteString (toStrict)
+import qualified Data.HashMap.Strict as HashMap (lookup)
 import qualified Data.List as List (head, lookup, map, reverse, unzip, zip)
 import qualified Data.Text.Encoding as Text (decodeUtf8)
 
@@ -64,5 +67,21 @@ process patterns =
 (!) deps = fromJust . fromDynamic . fromJust . ((flip List.lookup) deps)
 
 
+(?) :: (FromJSON a, ToJSON a) => Metadata -> Text -> a
+(?) obj key =
+  key
+    |> (flip HashMap.lookup) obj
+    |> fromJust
+    |> fromJSON
+    |> fromResult
+
+
 (<&>) :: Functor f => f a -> (a -> b) -> f b
 (<&>) = flip fmap
+
+
+fromResult :: ToJSON a => Result a -> a
+fromResult result =
+  case result of
+    Success x -> x
+    Error err -> error err
