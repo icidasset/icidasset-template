@@ -1,4 +1,3 @@
-{-# LANGUAGE RankNTypes #-}
 {-| Element functions you can use in the templates.
 
 -}
@@ -14,22 +13,12 @@ import Types
 import qualified Data.Text as Text (empty, intercalate, pack, replace)
 
 
-block_ :: Element a
 block_ = make "div" "block"
-
-blockText_ :: Element a
+blockList_ = make "div" "block__list"
 blockText_ = make "div" "block__text"
-
-blockTitle_ :: Element a
 blockTitle_ = make "h2" "block__title"
-
-blocks_ :: Element a
 blocks_ = make "div" "blocks"
-
-blocksRow_ :: Element a
 blocksRow_ = make "div" "blocks__row"
-
-container_ :: Element a
 container_ = make "div" "container"
 
 
@@ -50,7 +39,7 @@ markdownWithoutBlocks_ markdown =
     |> toHtmlRaw
 
 
-use_ :: [Attribute] -> Html ()
+use_ :: EmptyElement
 use_ = with (makeElementNoEnd "use")
 
 
@@ -58,7 +47,7 @@ use_ = with (makeElementNoEnd "use")
 -- Helpers
 
 
-make :: String -> String -> Element a
+make :: String -> String -> Element
 make tagName className =
   let
     className_ = Text.intercalate
