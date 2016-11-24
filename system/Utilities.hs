@@ -1,34 +1,28 @@
 {-# LANGUAGE FlexibleContexts #-}
 module Utilities
-  ( dictionary
-  , lsequence
+  ( lsequence
   , process
 
   , (↩)
-  , (!)
   , (⚡)
   , (⚡⚡)
   , (<&>)
   ) where
 
 
-import Data.Aeson (FromJSON, ToJSON, Result(..), Value, encode, fromJSON)
-import Data.Dynamic (Dynamic, Typeable, fromDynamic)
-import Data.Maybe (fromJust)
+import Data.Aeson (FromJSON, ToJSON, Result(..), Value, fromJSON)
 import Data.Text (Text)
 import Flow
-import Lucid.Base
-import Shikensu (list, makeDefinition, makeDictionary)
-import Shikensu.Contrib.IO (read)
+import Shikensu (list)
 import Shikensu.Types (Dictionary, Metadata, Pattern)
 import System.Directory (canonicalizePath)
 
-import qualified Data.Aeson as Aeson (Object, ToJSON, encode)
-import qualified Data.ByteString.Lazy as ByteString (toStrict)
+import qualified Data.Aeson as Aeson (Object, encode)
 import qualified Data.HashMap.Strict as HashMap (lookup)
-import qualified Data.List as List (head, lookup, map, reverse, unzip, zip)
+import qualified Data.List as List (unzip, zip)
 import qualified Data.Text as Text (unpack)
-import qualified Data.Text.Encoding as Text (decodeUtf8)
+import qualified Data.Text.Lazy as Lazy.Text (unpack)
+import qualified Data.Text.Lazy.Encoding as Lazy.Text (decodeUtf8)
 
 
 -- Data
@@ -43,11 +37,6 @@ rootDir = canonicalizePath "./"
 -- IO
 
 
-dictionary :: String -> IO Dictionary
-dictionary localPath =
-  rootDir >>= \dir -> return (makeDictionary dir "" [localPath])
-
-
 lsequence :: Monad m => [(String, m a)] -> m [(String, a)]
 lsequence list =
   let
@@ -55,7 +44,7 @@ lsequence list =
   in
     unzipped
       |> sequence . snd
-      |> fmap ((List.zip . fst) unzipped)
+      |> fmap (List.zip . fst $ unzipped)
 
 
 process :: [Pattern] -> IO Dictionary
@@ -75,10 +64,6 @@ infixl 6 ⚡⚡
 
 (↩) :: (Monoid b) => (b -> b) -> [b] -> b
 (↩) h = h . mconcat
-
-
-(!) :: (Eq k, Typeable v) => [(k, Dynamic)] -> k -> v
-(!) deps = fromJust . fromDynamic . fromJust . ((flip List.lookup) deps)
 
 
 (⚡) :: (FromJSON a, ToJSON a) => Metadata -> Text -> Maybe a
@@ -109,4 +94,4 @@ fromResult result =
 
 
 aesonObjectToString :: Aeson.Object -> String
-aesonObjectToString = Text.unpack . Text.decodeUtf8 . ByteString.toStrict . Aeson.encode
+aesonObjectToString = Lazy.Text.unpack . Lazy.Text.decodeUtf8 . Aeson.encode
