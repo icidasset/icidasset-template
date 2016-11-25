@@ -40,7 +40,9 @@ library
     cmark == 0.5.*,
     directory == 1.*,
     flow == 1.*,
+    frontmatter == 0.1.*,
     lucid == 2.9.*,
     shikensu == 0.1.*,
     text == 1.*,
-    unordered-containers == 0.2.*
+    unordered-containers == 0.2.*,
+    yaml == 0.8.*

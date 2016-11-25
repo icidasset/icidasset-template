@@ -1,7 +1,6 @@
 module Renderers.Lucid where
 
 import Data.ByteString (ByteString)
-import Data.Maybe as Maybe (fromJust, fromMaybe)
 import Data.Text.Encoding (decodeUtf8, encodeUtf8)
 import Flow
 import Shikensu.Types
@@ -29,10 +28,5 @@ catalogRenderer catalog def =
 
 renderer :: Template -> Definition -> Maybe ByteString
 renderer template def =
-  content def
-    |> fromMaybe BS.empty
-    |> Lucid.toHtmlRaw
-    |> template (metadata def)
-    |> Lucid.renderBS
-    |> BS.Lazy.toStrict
-    |> Just
+  (Lucid.toHtmlRaw .> template (metadata def) .> Lucid.renderBS .> BS.Lazy.toStrict .> Just)
+  (maybe BS.empty id $ content def)
