@@ -47,7 +47,7 @@
     & .icon {
       height: 3.25gr;
       margin-bottom: 1.25gr;
-      width: @height;
+      width: 3.25gr;
     }
 
     & .icon + span {

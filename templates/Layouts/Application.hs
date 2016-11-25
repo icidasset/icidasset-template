@@ -1,7 +1,6 @@
 module Layouts.Application where
 
 import Attributes
-import Components.Header
 import Data.Text (Text)
 import Elements
 import Flow
@@ -10,6 +9,7 @@ import Lucid.Html5
 import Types
 import Utilities ((↩), (⚡), (⚡⚡))
 
+import qualified Components.Header
 import qualified Data.Text as Text (append)
 
 

@@ -68,7 +68,7 @@
       color: $accent;
       height: 1.5gr;
       transform: translateY(-8%);
-      width: @height;
+      width: 1.5gr;
     }
   }
 

@@ -9,6 +9,9 @@
 @import "base/base";
 
 @import "components/block";
+@import "components/blockquote";
 @import "components/blocks";
 @import "components/container";
 @import "components/header";
+@import "components/icon";
+@import "components/small";

@@ -1,25 +1,28 @@
 module Components.Icon where
 
+import Data.Text (Text)
 import Elements
 import Lucid.Base (Html, makeAttribute)
 import Lucid.Html5
 import Types
-import Utilities ((↩))
+import Utilities ((↩), (⚡⚡))
 
-import qualified Data.Text as Text (append, intercalate)
+import qualified Data.Text as Text (append, intercalate, pack)
 
 
-template :: Partial
-template obj =
-  let
-    name = "TODO"
-    path = "TODO"
-  in
-    span_
-      [ class_ (Text.append "icon icon--" name) ] ↩
-      [ svg_
-          [ class_ "icon__cnt" ] ↩
-          [ use_
-              [ makeAttribute "xlink:href" (Text.intercalate "#" [path, name]) ]
-          ]
-      ]
+template :: String -> Partial
+template name =
+  \obj ->
+    let
+      pathToRoot  = obj ⚡⚡ "pathToRoot" :: Text
+      path        = Text.append pathToRoot "images/icons.svg"
+      name_       = Text.pack name
+    in
+      span_
+        [ class_ (Text.append "icon icon--" name_) ] ↩
+        [ svg_
+            [ class_ "icon__cnt" ] ↩
+            [ use_
+                [ makeAttribute "xlink:href" (Text.intercalate "#" [path, name_]) ]
+            ]
+        ]
