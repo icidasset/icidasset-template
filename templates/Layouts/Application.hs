@@ -4,19 +4,23 @@ import Attributes
 import Data.Text (Text)
 import Elements
 import Flow
-import Lucid.Base (Html, toHtml)
+import Lucid.Base (Html, makeAttribute, toHtml)
 import Lucid.Html5
 import Types
 import Utilities ((↩), (⚡), (⚡⚡))
 
 import qualified Components.Header
-import qualified Data.Text as Text (append)
+import qualified Data.Text as Text (append, empty, replace, toLower)
 
 
 template :: Template
 template obj children =
   let
-    title = obj ⚡ "title" :: Maybe Text
+    title     = obj ⚡ "title" :: Maybe Text
+    workdir   = obj ⚡ "workingDirname" :: Maybe Text
+    workspace = case workdir of
+      Just x  -> (Text.replace "src/" "" .> Text.toLower) x
+      Nothing -> (Text.empty)
   in
     [ doctype_
     , html_
@@ -32,7 +36,7 @@ template obj children =
                 (
                   Text.append
                     ( case title of
-                        Just x -> Text.append x " &ndash; "
+                        Just x -> Text.append x " – "
                         Nothing -> ""
                     )
                     ( "I.A." )
@@ -57,7 +61,7 @@ template obj children =
             ]
 
         , body_
-            [ class_ "TODO - Specify collection" ] ↩
+            [ makeAttribute "workspace" workspace ] ↩
             [ Components.Header.template obj
             , children
             ]

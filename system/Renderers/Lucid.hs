@@ -19,7 +19,13 @@ import qualified Lucid.Base as Lucid (renderBS, toHtml, toHtmlRaw)
 catalogRenderer :: TemplateCatalog -> Definition -> Maybe ByteString
 catalogRenderer catalog def =
   let
-    template = HashMap.lookup (basename def) catalog
+    name =
+      if length (dirname def) > 0 then
+        dirname def
+      else
+        basename def
+
+    template = HashMap.lookup name catalog
   in
     case template of
       Just t -> renderer t def

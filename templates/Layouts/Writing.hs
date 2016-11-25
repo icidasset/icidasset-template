@@ -1,11 +1,13 @@
 module Layouts.Writing where
 
-import Data.Monoid ((<>))
+import Data.Text (Text)
 import Elements
-import Lucid.Base (Html)
+import Lucid.Base (Html, toHtml)
 import Lucid.Html5
 import Types
-import Utilities ((↩))
+import Utilities ((↩), (⚡⚡))
+
+import qualified Data.Text as Text (concat)
 
 
 template :: Template
@@ -16,8 +18,32 @@ template obj children =
         [] ↩
         [ h1_
             [] ↩
-            [ "TODO - Title of writing" ]
+            [ toHtml (obj ⚡⚡ "title" :: String) ]
 
         , children
         ]
+
+    , prismScript_ "prism"
+    , prismScript_ "components/prism-bash"
+    , prismScript_ "components/prism-elixir"
+    , prismScript_ "components/prism-haskell"
+    , prismScript_ "components/prism-javascript"
+    , prismScript_ "components/prism-json"
+    , prismScript_ "components/prism-markdown"
+    , prismScript_ "components/prism-yaml"
     ]
+
+
+
+-- Helpers
+
+
+prismScript_ :: Text -> Html ()
+prismScript_ name =
+  let
+    prefix = "https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/" :: Text
+    suffix = ".min.js" :: Text
+  in
+    script_
+      [ src_ (Text.concat [ prefix, name, suffix ]) ]
+      ( "" )
