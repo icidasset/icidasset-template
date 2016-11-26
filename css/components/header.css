@@ -62,7 +62,7 @@
 
   & .header__go-up {
     display: inline-block;
-    margin-left: 1gr;
+    margin-left: 1.5gr;
 
     & .icon {
       color: $accent;

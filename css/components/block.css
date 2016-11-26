@@ -110,5 +110,13 @@
     padding-bottom: 1gr;
   }
 
+  & .block__list .block__list__affix {
+    display: inline-block;
+    font-size: 0.7em;
+    font-style: italic;
+    margin-left: 1gr;
+    opacity: .475;
+  }
+
 
 }

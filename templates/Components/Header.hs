@@ -9,13 +9,17 @@ import Lucid.Html5
 import Types
 import Utilities ((↩), (⚡⚡))
 
-import qualified Data.Text as Text (null)
+import qualified Data.Text as Text (concat, null)
 
 
 template :: Partial
 template obj =
   let
     parentPath = obj ⚡⚡ "parentPath" :: Maybe Text
+    logoHref   = Text.concat
+      [ obj ⚡⚡ "pathToRoot"
+      , if obj ⚡⚡ "basename" /= "index" then "../" else ""
+      ]
   in
     header_
       [ class_ "header" ] ↩
@@ -24,7 +28,7 @@ template obj =
           [ div_
               [ class_ "header__col header__col--left" ] ↩
               [ a_
-                  [ relativeHref_ obj "", class_ "header__logo" ] ↩
+                  [ href_ logoHref, class_ "header__logo" ] ↩
                   [ "I.A." ]
 
               , case parentPath of
