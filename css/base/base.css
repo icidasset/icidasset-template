@@ -121,6 +121,5 @@ ol {
 }
 
 ul {
-  & li { padding-left: rem(28px); }
   & li:before { content: "•"; }
 }
