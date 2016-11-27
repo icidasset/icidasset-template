@@ -64,6 +64,11 @@
   & .block__title {
     font-size: 1.125rem;
     margin: 0 0 2gr;
+
+    &.is-colored {
+      color: $base09;
+      font-weight: 400;
+    }
   }
 
 
