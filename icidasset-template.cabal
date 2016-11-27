@@ -17,8 +17,7 @@ library
     OverloadedStrings
 
   hs-source-dirs:
-    system,
-    templates
+    haskell
 
   exposed-modules:
     Attributes
@@ -31,6 +30,7 @@ library
     Renderers.Lucid
     Renderers.Markdown
     Shikensu.Functions
+    Template
     Types
     Utilities
 
@@ -57,7 +57,7 @@ executable server
     OverloadedStrings
 
   hs-source-dirs:
-    system
+    haskell
 
   main-is:
     Server.hs
