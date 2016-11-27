@@ -1,12 +1,6 @@
 module Components.Icon where
 
-import Data.Text (Text)
-import Elements
-import Lucid.Base (Html, makeAttribute)
-import Lucid.Html5
-import Types
-import Utilities ((↩), (⚡⚡))
-
+import Template
 import qualified Data.Text as Text (append, intercalate, pack)
 
 

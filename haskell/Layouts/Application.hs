@@ -1,14 +1,6 @@
 module Layouts.Application where
 
-import Attributes
-import Data.Text (Text)
-import Elements
-import Flow
-import Lucid.Base (Html, makeAttribute, toHtml)
-import Lucid.Html5
-import Types
-import Utilities ((↩), (⚡), (⚡⚡))
-
+import Template
 import qualified Components.Header
 import qualified Data.Text as Text (append, empty, replace, toLower)
 

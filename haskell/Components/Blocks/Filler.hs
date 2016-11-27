@@ -1,11 +1,6 @@
 module Components.Blocks.Filler where
 
-import Elements
-import Lucid.Base (Attribute, makeAttribute, toHtml)
-import Lucid.Html5
-import Types
-import Utilities ((↩))
-
+import Template
 import qualified Components.Icon
 import qualified Data.Text as Text (append, intercalate)
 

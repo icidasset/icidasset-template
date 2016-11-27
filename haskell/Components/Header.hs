@@ -1,22 +1,17 @@
 module Components.Header where
 
-import Attributes
-import Components.Icon
-import Data.Text (Text)
-import Elements
-import Lucid.Base (Html)
-import Lucid.Html5
-import Types
-import Utilities ((↩), (⚡⚡))
-
-import qualified Data.Text as Text (concat, null)
+import Template
+import qualified Components.Icon
+import qualified Data.Text as Text (concat)
 
 
 template :: Partial
 template obj =
   let
     parentPath = obj ⚡⚡ "parentPath" :: Maybe Text
-    logoHref   = Text.concat
+    category   = obj ⚡ "category" :: Maybe String
+
+    logoHref = Text.concat
       [ obj ⚡⚡ "pathToRoot"
       , if obj ⚡⚡ "basename" /= "index" then "../" else ""
       ]
@@ -36,6 +31,14 @@ template obj =
                     a_
                       [ href_ x, class_ "header__go-up", title_ "Go up" ] ↩
                       [ Components.Icon.template "i-flash" obj ]
+                  Nothing ->
+                    ""
+
+              , case category of
+                  Just cat ->
+                    span_
+                      [ class_ "header__cat" ] ↩
+                      [ toHtml cat ]
                   Nothing ->
                     ""
               ]

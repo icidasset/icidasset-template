@@ -20,7 +20,7 @@ import Data.Aeson as Aeson (Object, Value)
 import Data.Text as Text (Text)
 import Elements
 import Flow
-import Lucid.Base (Html, toHtml)
+import Lucid.Base (Attribute, Html, makeAttribute, toHtml)
 import Lucid.Html5
 import Types
 import Utilities ((↩), (⚡), (⚡⚡))

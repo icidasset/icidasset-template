@@ -72,5 +72,18 @@
     }
   }
 
+  & .header__cat {
+    @mixin font-smoothing;
+    @mixin heading-font;
+    background: $base00;
+    border-radius: 3px;
+    color: white;
+    display: inline-block;
+    font-size: .875em;
+    line-height: 1.85;
+    margin-left: 1.5gr;
+    padding: 1px 6px;
+  }
+
 
 }

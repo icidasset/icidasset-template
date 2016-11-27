@@ -1,12 +1,6 @@
 module Layouts.Writing where
 
-import Data.Text (Text)
-import Elements
-import Lucid.Base (Html, toHtml)
-import Lucid.Html5
-import Types
-import Utilities ((↩), (⚡⚡))
-
+import Template
 import qualified Data.Text as Text (concat)
 
 
