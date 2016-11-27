@@ -1,0 +1,19 @@
+.button,
+button {
+  @mixin default-font;
+  @mixin font-smoothing;
+  background: transparent;
+  border: 1px solid $base09;
+  border-radius: 3px;
+  color: $base09;
+  cursor: pointer;
+  display: inline-block;
+  font-size: .8rem;
+  font-weight: 700;
+  padding: 13px 13px 11px;
+  text-transform: uppercase;
+
+  &:focus {
+    outline: 0;
+  }
+}

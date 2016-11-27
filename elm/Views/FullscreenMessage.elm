@@ -1,11 +1,11 @@
-module FullscreenMessage exposing (view)
+module Views.FullscreenMessage exposing (view)
 
-import Html
-import Html.Attributes
+import Html exposing (..)
+import Model.Types exposing (Model)
 
 
-view : Html msg
-view =
+view : Model -> Html msg
+view model =
     div
         []
         []

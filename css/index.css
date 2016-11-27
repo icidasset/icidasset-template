@@ -13,8 +13,10 @@
 @import "components/block";
 @import "components/blockquote";
 @import "components/blocks";
+@import "components/button";
 @import "components/code";
 @import "components/container";
+@import "components/form";
 @import "components/header";
 @import "components/hide";
 @import "components/icon";

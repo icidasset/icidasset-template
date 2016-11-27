@@ -1,19 +1,17 @@
-module AuthScreen exposing (view)
+module Views.AuthScreen exposing (view)
 
-import Html
-import Html.Attributes
+import Html exposing (..)
+import Html.Attributes exposing (class, name, placeholder, style, type_)
+import Model.Types exposing (Model)
 
 
-view : Html msg
-view =
+view : Model -> Html msg
+view model =
     div
-        [ class "auth-screen" ]
+        [ class "auth-screen roughly-centered" ]
         [ form
             []
-            [ div
-                []
-                formNodes
-            ]
+            formNodes
         ]
 
 
@@ -23,7 +21,16 @@ view =
 
 formNodes : List (Html msg)
 formNodes =
-    [ input
-        [ type_ "text" ]
+    [ p
         []
+        [ input
+            [ name "email", placeholder "Email", type_ "email" ]
+            []
+        ]
+    , p
+        [ style [ ( "text-align", "right" ) ] ]
+        [ button
+            [ type_ "submit", style [ ( "display", "block" ), ( "width", "100%" ) ] ]
+            [ text "Sign in" ]
+        ]
     ]

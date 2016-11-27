@@ -1,0 +1,6 @@
+.roughly-centered {
+  align-items: center;
+  display: flex;
+  height: calc(100vh - 116px - 2.25rem);
+  justify-content: center;
+}
