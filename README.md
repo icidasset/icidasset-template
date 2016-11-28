@@ -21,6 +21,12 @@ A generic template for my personal projects.
 2. Use the Haskell modules as normal.
 
 
+### Elm
+
+1. Add `icidasset-template/elm` to `source-directories` in the `elm-package.json` file.
+2. Use the Elm modules as normal.
+
+
 ### Css
 
 1. Add the `"icidasset-template": "file:./icidasset-template"` dependency to `package.json` in the root directory.
