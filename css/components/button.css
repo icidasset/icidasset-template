@@ -3,7 +3,7 @@ button {
   @mixin default-font;
   @mixin font-smoothing;
   background: transparent;
-  border: 1px solid $base09;
+  border: 1px solid color($base09 a(.475));
   border-radius: 3px;
   color: $base09;
   cursor: pointer;

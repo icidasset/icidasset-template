@@ -3,13 +3,13 @@ form {
   & input:not([type="submit"]) {
     @mixin default-font;
     border: 0;
-    border-bottom: 1px solid $base05;
+    border-bottom: 1px solid $base06;
     box-sizing: border-box;
     color: $text-color;
     display: block;
-    font-size: .9rem;
+    font-size: .875rem;
     height: 3rem;
-    letter-spacing: 0.025em;
+    letter-spacing: 0.035em;
     width: rem(350px);
 
     &::placeholder {
@@ -18,7 +18,7 @@ form {
 
     &:focus {
       border-bottom-color: $base09;
-      border-bottom-width: 2px;
+      box-shadow: 0 -3px 0 0 $base09 inset;
       outline: 0;
     }
   }
