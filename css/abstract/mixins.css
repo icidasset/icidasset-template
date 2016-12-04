@@ -10,6 +10,10 @@
   font-family: "Playfair Display", serif;
 }
 
+@define-mixin label-font {
+  font-family: sans-serif;
+}
+
 @define-mixin font-smoothing {
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: grayscale;

@@ -17,10 +17,18 @@ form {
     }
 
     &:focus {
-      border-bottom-color: $base09;
-      box-shadow: 0 -3px 0 0 $base09 inset;
+      border-bottom-color: $fadedBlue;
+      box-shadow: 0 2px 0 0 $fadedBlue, 0 -2px 0 0 $fadedBlue inset;
       outline: 0;
     }
+  }
+
+  & label {
+    @mixin label-font;
+    display: block;
+    font-size: .825rem;
+    font-weight: bold;
+    line-height: 1;
   }
 
 
