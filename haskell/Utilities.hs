@@ -7,6 +7,7 @@ module Utilities
   , (⚡)
   , (⚡⚡)
   , (<&>)
+  , pathToRootForProxy
   ) where
 
 
@@ -14,7 +15,7 @@ import Data.Aeson (FromJSON, ToJSON, Result(..), Value, fromJSON)
 import Data.Text (Text)
 import Flow
 import Shikensu (list)
-import Shikensu.Types (Dictionary, Metadata, Pattern)
+import Shikensu.Types (Dictionary, Metadata, Pattern, basename, pathToRoot)
 import System.Directory (canonicalizePath)
 
 import qualified Data.Aeson as Aeson (Object, encode)
@@ -84,6 +85,20 @@ infixl 6 ⚡⚡
 
 (<&>) :: Functor f => f a -> (a -> b) -> f b
 (<&>) = flip fmap
+
+
+pathToRootForProxy :: Dictionary -> Dictionary
+pathToRootForProxy =
+  fmap $ \def ->
+    if basename def == "200" then
+      def { pathToRoot = "/" }
+    else
+      def
+
+
+
+
+-- Private
 
 
 fromResult :: ToJSON a => Result a -> a
