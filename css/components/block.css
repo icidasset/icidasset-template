@@ -65,6 +65,11 @@
     font-size: 1.125rem;
     margin: 0 0 2gr;
 
+    &.is-more-subtle {
+      font-size: 1.025rem;
+      font-weight: 400;
+    }
+
     &.is-colored {
       color: $base09;
       font-weight: 400;
@@ -121,6 +126,17 @@
     font-style: italic;
     margin-left: 1gr;
     opacity: .475;
+  }
+
+
+  /**
+   * List -- Bold
+   */
+  & .block__list.block__list--bold {
+    & li a {
+      display: inline-block;
+      padding: .5gr 0;
+    }
   }
 
 

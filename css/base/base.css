@@ -124,3 +124,7 @@ ol {
 ul {
   & li:before { content: "•"; }
 }
+
+.with-monospace-font {
+  @mixin monospace-font;
+}

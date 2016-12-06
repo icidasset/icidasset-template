@@ -8,9 +8,9 @@ button {
   color: $fadedBlue;
   cursor: pointer;
   display: inline-block;
-  font-size: .8rem;
+  font-size: .75rem;
   font-weight: 700;
-  padding: 13px 13px 11px;
+  padding: 1.125em;
   text-transform: uppercase;
 
   &:focus {

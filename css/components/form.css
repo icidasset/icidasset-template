@@ -1,15 +1,20 @@
 form {
 
-  & input:not([type="submit"]) {
+  /**
+   * Input
+   */
+  & input:not([type="submit"]),
+  & textarea {
     @mixin default-font;
     border: 0;
     border-bottom: 1px solid $base06;
     box-sizing: border-box;
     color: $text-color;
     display: block;
-    font-size: .85rem;
+    font-size: .9rem;
     height: 3rem;
-    letter-spacing: 0.035em;
+    line-height: 1.5;
+    padding: 0;
     width: rem(350px);
 
     &::placeholder {
@@ -21,14 +26,28 @@ form {
       box-shadow: 0 2px 0 0 $fadedBlue, 0 -2px 0 0 $fadedBlue inset;
       outline: 0;
     }
+
+    &.has-full-width {
+      width: 100%;
+    }
   }
 
+  & textarea {
+    height: 10gr;
+    padding: 1gr 0;
+    resize: none;
+  }
+
+  /**
+   * Label
+   */
   & label {
     @mixin label-font;
     display: block;
     font-size: .825rem;
     font-weight: bold;
     line-height: 1;
+    margin-bottom: 1px;
   }
 
 
