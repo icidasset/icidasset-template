@@ -50,5 +50,14 @@ form {
     margin-bottom: 1px;
   }
 
+  /**
+   * Errors
+   */
+  & .form__error {
+    color: $base08;
+    font-size: .95em;
+    font-style: italic;
+  }
+
 
 }
