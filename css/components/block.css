@@ -109,6 +109,15 @@
     & li::before {
       content: none;
     }
+
+    & li a {
+      cursor: pointer;
+    }
+
+    & li a > span {
+      display: inline-block;
+      margin-right: .5gr;
+    }
   }
 
   & .block__list:last-child ul:last-child,

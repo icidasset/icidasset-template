@@ -1,0 +1,27 @@
+.data-list {
+  display: block;
+
+  /**
+   * Items
+   */
+  & .data-list__item {
+    border-bottom: 1px dashed $base07;
+    margin-bottom: 2gr;
+    padding-bottom: 2gr;
+  }
+
+  /**
+   * Labels
+   */
+  & .data-list__item .item__label {
+    color: $base04;
+    font-size: .75em;
+    font-style: italic;
+    letter-spacing: .0125em;
+    margin-bottom: 3px;
+    margin-top: 1gr;
+    text-transform: uppercase;
+  }
+
+
+}
