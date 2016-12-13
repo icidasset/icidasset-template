@@ -1,0 +1,29 @@
+.select-box {
+  margin: 1gr 0;
+  width: rem(350px);
+
+  & select {
+    @mixin default-font;
+    appearance: none;
+    background: transparent;
+    border: 1px solid $base06;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: $text-color;
+    display: block;
+    height: 3rem;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0 1.5gr;
+    width: 100%;
+
+    &:focus {
+      border-color: $fadedBlue;
+      border-width: 5px;
+      outline: 0;
+      padding: 0 calc(1.5gr - 4px);
+    }
+  }
+
+
+}

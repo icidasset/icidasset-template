@@ -21,5 +21,6 @@
 @import "components/header";
 @import "components/hide";
 @import "components/icon";
+@import "components/select-box";
 @import "components/small";
 @import "components/spinner";
