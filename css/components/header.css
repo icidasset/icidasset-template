@@ -65,7 +65,7 @@
     margin-left: 1.5gr;
 
     & .icon {
-      color: $accent;
+      color: $base0a;
       height: 1.5gr;
       transform: translateY(-8%);
       width: 1.5gr;

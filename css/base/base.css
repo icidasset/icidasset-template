@@ -60,12 +60,20 @@ h3 {
 a {
   color: inherit;
   text-decoration: none;
+
+  &.is-colored {
+    color: $link-color;
+  }
 }
 
 p a,
 ul a,
 ol a {
   border-bottom: 1px solid color($text-color a(.5));
+
+  &.is-colored {
+    border-bottom-color: color($link-color a(.9));
+  }
 }
 
 

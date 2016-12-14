@@ -71,7 +71,7 @@
     }
 
     &.is-colored {
-      color: $base09;
+      color: $accent;
       font-weight: 400;
     }
   }
