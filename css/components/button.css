@@ -3,9 +3,9 @@ button {
   @mixin default-font;
   @mixin font-smoothing;
   background: transparent;
-  border: 1px solid color($fadedBlue a(.55));
+  border: 2px solid color($base09 a(.55));
   border-radius: 3px;
-  color: $fadedBlue;
+  color: $base09;
   cursor: pointer;
   display: inline-block;
   font-size: .75rem;

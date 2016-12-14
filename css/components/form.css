@@ -22,8 +22,8 @@ form {
     }
 
     &:focus {
-      border-bottom-color: $fadedBlue;
-      box-shadow: 0 2px 0 0 $fadedBlue, 0 -2px 0 0 $fadedBlue inset;
+      border-bottom-color: $base09;
+      box-shadow: 0 2px 0 0 $base09, 0 -2px 0 0 $base09 inset;
       outline: 0;
     }
 
