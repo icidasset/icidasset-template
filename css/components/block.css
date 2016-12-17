@@ -111,10 +111,6 @@
       content: none;
     }
 
-    & li a {
-      cursor: pointer;
-    }
-
     & li a > span {
       display: inline-block;
       margin-right: .5gr;

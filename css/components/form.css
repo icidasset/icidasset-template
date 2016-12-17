@@ -15,7 +15,9 @@ form {
     height: 3rem;
     line-height: 1.5;
     padding: 0;
+    position: relative;
     width: rem(350px);
+    z-index: 0;
 
     &::placeholder {
       color: $base05;
@@ -25,6 +27,7 @@ form {
       border-bottom-color: $accent;
       box-shadow: 0 2px 0 0 $accent, 0 -2px 0 0 $accent inset;
       outline: 0;
+      z-index: 1;
     }
 
     &.has-full-width {
