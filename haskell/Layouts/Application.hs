@@ -45,7 +45,7 @@ template obj children =
                 [ rel_ "stylesheet"
                 , href_ ( Text.append
                             "https://fonts.googleapis.com/css?family="
-                            "Playfair+Display|Montserrat:400,700|Lora:400,700,400italic,700italic"
+                            "Playfair+Display:400,700|Nunito+Sans:400,700,400italic,700italic"
                         )
                 ]
 

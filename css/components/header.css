@@ -44,7 +44,7 @@
       @mixin font-smoothing;
       display: inline-block;
       opacity: .25;
-      transform: translateY(.5px);
+      transform: translateY(2px);
     }
   }
 
@@ -82,7 +82,9 @@
     font-size: .875em;
     line-height: 1.85;
     margin-left: 1.5gr;
-    padding: 1px 6px;
+    padding: 1px 6px 2px;
+    text-transform: uppercase;
+    transform: translateY(-1px);
   }
 
 

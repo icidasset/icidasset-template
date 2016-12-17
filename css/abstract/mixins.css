@@ -1,9 +1,9 @@
 @define-mixin default-font {
-  font-family: "Lora", serif;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 @define-mixin heading-font {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Playfair Display", serif;
 }
 
 @define-mixin display-font {
@@ -11,7 +11,7 @@
 }
 
 @define-mixin label-font {
-  font-family: sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 @define-mixin monospace-font {
