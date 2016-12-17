@@ -17,7 +17,7 @@ $base0f: #bb9584;
 
 $fadedBlue: #748DFF;
 
-$accent: $base0c;
+$accent: $base09;
 $text-color: color($base02 saturation(-20));
 $darker-text-color: $base00;
 $link-color: color($accent saturation(-17.5));

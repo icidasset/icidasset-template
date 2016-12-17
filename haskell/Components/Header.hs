@@ -26,19 +26,19 @@ template obj =
                   [ href_ logoHref, class_ "header__logo" ] ↩
                   [ "I.A." ]
 
-              , case parentPath of
-                  Just x ->
-                    a_
-                      [ href_ x, class_ "header__go-up", title_ "Go up" ] ↩
-                      [ Components.Icon.template "i-flash" obj ]
-                  Nothing ->
-                    ""
-
               , case category of
                   Just cat ->
                     span_
                       [ class_ "header__cat" ] ↩
                       [ toHtml cat ]
+                  Nothing ->
+                    ""
+
+              , case parentPath of
+                  Just x ->
+                    a_
+                      [ href_ x, class_ "header__go-up", title_ "Go up" ] ↩
+                      [ Components.Icon.template "i-flash" obj ]
                   Nothing ->
                     ""
               ]
