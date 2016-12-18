@@ -17,7 +17,7 @@ form {
     line-height: 1.5;
     padding: 0;
     position: relative;
-    width: rem(350px);
+    width: 100%;
     z-index: 0;
 
     &::placeholder {

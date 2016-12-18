@@ -46,7 +46,6 @@
 
     & .icon {
       height: 3.25gr;
-      margin-bottom: 1.25gr;
       width: 3.25gr;
     }
 
@@ -56,6 +55,7 @@
       font-weight: 600;
       letter-spacing: .0125em;
       line-height: 1;
+      margin-top: 1.25gr;
     }
   }
 
@@ -82,7 +82,6 @@
    * Text
    */
   & .block__text {
-    max-width: 350px;
     padding-right: 4gr;
     text-align: justify;
   }
