@@ -8,6 +8,7 @@ form {
     @mixin default-font;
     border: 0;
     border-bottom: 1px solid $base06;
+    border-radius: 0;
     box-sizing: border-box;
     color: $text-color;
     display: block;

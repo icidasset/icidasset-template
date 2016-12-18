@@ -2,7 +2,8 @@ module Views.AuthScreen exposing (view)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing (onInput, onSubmit)
+import Html.Events exposing (on, onInput, onSubmit)
+import Json.Decode
 import Model.Types exposing (Model, Msg)
 
 
@@ -32,6 +33,7 @@ formNodes inputMsg =
             , placeholder "example@gmail.com"
             , type_ "email"
             , onInput inputMsg
+            , on "change" (Json.Decode.map inputMsg Html.Events.targetValue)
             ]
             []
         ]
