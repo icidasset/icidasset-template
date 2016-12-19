@@ -24,6 +24,7 @@ library
     Components.Blocks.Filler
     Components.Header
     Components.Icon
+    Components.LoadingScreen
     Elements
     Layouts.Application
     Layouts.Writing
