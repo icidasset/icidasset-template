@@ -82,6 +82,7 @@
    * Text
    */
   & .block__text {
+    max-width: rem(350px);
     padding-right: 4gr;
     text-align: justify;
   }
