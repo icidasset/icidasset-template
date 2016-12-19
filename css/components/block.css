@@ -101,6 +101,14 @@
 
 
   /**
+   * Input
+   */
+  & .block__input {
+    padding-right: 4gr;
+  }
+
+
+  /**
    * List
    */
   & .block__list {
