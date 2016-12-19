@@ -35,11 +35,11 @@
   /* margin between blocks on the same row */
   & .blocks__row .block:nth-child(n+2) {
     @media (--small) {
-      margin-left: 2gr;
+      margin-left: 1gr;
     }
 
     @media (--medium) {
-      margin-left: 3gr;
+      margin-left: 2gr;
     }
   }
 

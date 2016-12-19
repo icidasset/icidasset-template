@@ -1,5 +1,11 @@
 form {
 
+  &.with-min-width {
+    @media (--small) {
+      min-width: rem(350px);
+    }
+  }
+
   /**
    * Input
    */

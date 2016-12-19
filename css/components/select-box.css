@@ -1,6 +1,5 @@
 .select-box {
   margin: 1gr 0;
-  width: rem(350px);
 
   & select {
     @mixin default-font;

@@ -12,7 +12,7 @@ view inputMsg submitMsg =
     div
         [ class "auth-screen roughly-centered" ]
         [ Html.form
-            [ onSubmit submitMsg ]
+            [ class "with-min-width", onSubmit submitMsg ]
             (formNodes inputMsg)
         ]
 
