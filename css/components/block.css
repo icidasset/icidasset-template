@@ -115,7 +115,7 @@
     left: rem(-28px);
     position: relative;
 
-    & li::before {
+    &:not(.with-bullets) li::before {
       content: none;
     }
 
