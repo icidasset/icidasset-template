@@ -8,12 +8,15 @@ module Utilities
   , (⚡⚡)
   , (<&>)
   , pathToRootForProxy
+  , prismScript_
   ) where
 
 
 import Data.Aeson (FromJSON, ToJSON, Result(..), Value, fromJSON)
 import Data.Text (Text)
 import Flow
+import Lucid.Base (Html)
+import Lucid.Html5 (script_, src_)
 import Shikensu (list)
 import Shikensu.Types (Dictionary, Metadata, Pattern, basename, pathToRoot)
 import System.Directory (canonicalizePath)
@@ -21,7 +24,7 @@ import System.Directory (canonicalizePath)
 import qualified Data.Aeson as Aeson (Object, encode)
 import qualified Data.HashMap.Strict as HashMap (lookup)
 import qualified Data.List as List (unzip, zip)
-import qualified Data.Text as Text (unpack)
+import qualified Data.Text as Text (concat, unpack)
 import qualified Data.Text.Lazy as Lazy.Text (unpack)
 import qualified Data.Text.Lazy.Encoding as Lazy.Text (decodeUtf8)
 
@@ -94,6 +97,17 @@ pathToRootForProxy =
       def { pathToRoot = "/" }
     else
       def
+
+
+prismScript_ :: Text -> Html ()
+prismScript_ name =
+  let
+    prefix = "https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/" :: Text
+    suffix = ".min.js" :: Text
+  in
+    script_
+      [ src_ (Text.concat [ prefix, name, suffix ]) ]
+      ( "" )
 
 
 
