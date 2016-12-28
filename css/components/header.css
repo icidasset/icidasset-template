@@ -6,9 +6,11 @@
 
   & .container {
     display: flex;
+    overflow: hidden;
     padding-bottom: 2gr;
     padding-top: 2gr;
     position: relative;
+    white-space: nowrap;
   }
 
   & .container:after {
