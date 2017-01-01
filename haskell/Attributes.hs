@@ -15,8 +15,8 @@ import qualified Data.Text as Text (append, pack)
 
 relativeHref_ :: Metadata -> String -> Attribute
 relativeHref_ obj suffix =
-  let
-    pathToRoot = obj ⚡⚡ "pathToRoot" :: Text
-    suffix_ = Text.pack suffix
-  in
-    href_ (Text.append pathToRoot suffix_)
+    let
+        pathToRoot = obj ⚡⚡ "pathToRoot" :: Text
+        suffix_ = Text.pack suffix
+    in
+        href_ (Text.append pathToRoot suffix_)

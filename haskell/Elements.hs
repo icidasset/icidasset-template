@@ -34,14 +34,14 @@ markdown_ = toHtmlRaw . commonmarkToHtml [optSmart]
 
 markdownWithoutBlocks_ :: Text -> Html ()
 markdownWithoutBlocks_ markdown =
-  markdown
-    |> commonmarkToHtml [optSmart]
-    |> Text.replace "<p>" ""
-    |> Text.replace "</p>" ""
-    |> toHtmlRaw
+    markdown
+        |> commonmarkToHtml [optSmart]
+        |> Text.replace "<p>" ""
+        |> Text.replace "</p>" ""
+        |> toHtmlRaw
 
 
-relativeScript :: String -> String -> Html ()
+relativeScript_ :: Text -> Text -> Html ()
 relativeScript_ pathPrefix path =
     script_
         [ src_ $ Text.append pathPrefix path ]
@@ -58,15 +58,15 @@ use_ = with (makeElementNoEnd "use")
 
 make :: String -> String -> Element
 make tagName className =
-  let
-    className_ = Text.intercalate
-      " "
-      [ Text.empty
-      , Text.pack className
-      , Text.empty
-      ]
-  in
-    \attributes ->
-      with
-        (makeElement $ Text.pack tagName)
-        ([ class_ $ className_ ] ++ attributes)
+    let
+        className_ = Text.intercalate
+            " "
+            [ Text.empty
+            , Text.pack className
+            , Text.empty
+            ]
+    in
+        \attributes ->
+            with
+                (makeElement $ Text.pack tagName)
+                ([ class_ $ className_ ] ++ attributes)

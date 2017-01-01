@@ -10,9 +10,9 @@ import qualified Lucid (renderText)
 {-| Replaces the contents of the node (selected by `selector`)
 with a `LoadingScreen`.
 -}
-template :: Partial
-template =
-    \selector ->
+template :: Text -> Partial
+template selector =
+    \obj ->
         script_
             []
             ( Text.concat

@@ -25,6 +25,7 @@ library
     Components.Header
     Components.Icon
     Components.LoadingScreen
+    Components.LoadingScreenScript
     Elements
     Layouts.Application
     Layouts.Writing

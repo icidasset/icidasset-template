@@ -18,21 +18,21 @@ import qualified Lucid.Base as Lucid (renderBS, toHtml, toHtmlRaw)
 
 catalogRenderer :: TemplateCatalog -> Definition -> Maybe ByteString
 catalogRenderer catalog def =
-  let
-    name =
-      if length (dirname def) > 0 then
-        dirname def
-      else
-        basename def
+    let
+        name =
+            if length (dirname def) > 0 then
+                dirname def
+            else
+                basename def
 
-    template = HashMap.lookup name catalog
-  in
-    case template of
-      Just t -> renderer t def
-      Nothing -> Just BS.empty
+        template = HashMap.lookup name catalog
+    in
+        case template of
+            Just t -> renderer t def
+            Nothing -> Just BS.empty
 
 
 renderer :: Template -> Definition -> Maybe ByteString
 renderer template def =
-  (Lucid.toHtmlRaw .> template (metadata def) .> Lucid.renderBS .> BS.Lazy.toStrict .> Just)
-  (maybe BS.empty id $ content def)
+    (Lucid.toHtmlRaw .> template (metadata def) .> Lucid.renderBS .> BS.Lazy.toStrict .> Just)
+    (maybe BS.empty id $ content def)

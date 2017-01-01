@@ -7,167 +7,167 @@ import qualified Data.Text as Text (append, empty, replace, toLower)
 
 template :: Template
 template obj children =
-  let
-    title     = obj ⚡ "title" :: Maybe Text
-    workdir   = obj ⚡ "workingDirname" :: Maybe Text
-    workspace = case workdir of
-      Just x  -> (Text.replace "src/" "" .> Text.toLower) x
-      Nothing -> (Text.empty)
-  in
-    [ doctype_
-    , html_
-        [] ↩
-        [ head_
+    let
+        title     = obj ⚡ "title" :: Maybe Text
+        workdir   = obj ⚡ "workingDirname" :: Maybe Text
+        workspace = case workdir of
+            Just x  -> (Text.replace "src/" "" .> Text.toLower) x
+            Nothing -> (Text.empty)
+    in
+        [ doctype_
+        , html_
             [] ↩
-            [ meta_ [ charset_ "utf-8" ]
-            , meta_ [ httpEquiv_ "Content-Type", content_ "text/html; charset=utf-8" ]
-            , meta_ [ httpEquiv_ "X-UA-Compatible", content_ "IE=edge" ]
-            , meta_ [ name_ "viewport", content_ "width=device-width, initial-scale=1" ]
+            [ head_
+                [] ↩
+                [ meta_ [ charset_ "utf-8" ]
+                , meta_ [ httpEquiv_ "Content-Type", content_ "text/html; charset=utf-8" ]
+                , meta_ [ httpEquiv_ "X-UA-Compatible", content_ "IE=edge" ]
+                , meta_ [ name_ "viewport", content_ "width=device-width, initial-scale=1" ]
 
-            , title_
-                (
-                  Text.append
-                    ( case title of
-                        Just x -> Text.append x " – "
-                        Nothing -> ""
+                , title_
+                    (
+                        Text.append
+                            ( case title of
+                                Just x -> Text.append x " – "
+                                Nothing -> ""
+                            )
+                            ( "I.A." )
+
+                        |> toHtml
                     )
-                    ( "I.A." )
 
-                  |> toHtml
-                )
+                , link_
+                    [ rel_ "stylesheet"
+                    , relativeHref_ obj "application.css"
+                    ]
 
-            , link_
-                [ rel_ "stylesheet"
-                , relativeHref_ obj "application.css"
+                , link_
+                    [ rel_ "stylesheet"
+                    , href_ ( Text.append
+                        "https://fonts.googleapis.com/css?family="
+                        "Playfair+Display:400,700|Nunito+Sans:400,600,700,400italic,700italic"
+                    )
+                    ]
+
+                , faviconsTemplate obj
                 ]
 
-            , link_
-                [ rel_ "stylesheet"
-                , href_ ( Text.append
-                            "https://fonts.googleapis.com/css?family="
-                            "Playfair+Display:400,700|Nunito+Sans:400,600,700,400italic,700italic"
-                        )
+            , body_
+                [ makeAttribute "workspace" workspace ] ↩
+                [ Components.Header.template obj
+                , children
                 ]
 
-            , faviconsTemplate obj
             ]
-
-        , body_
-            [ makeAttribute "workspace" workspace ] ↩
-            [ Components.Header.template obj
-            , children
-            ]
-
         ]
-    ]
 
-    |> mconcat
+        |> mconcat
 
 
 faviconsTemplate :: Partial
 faviconsTemplate obj = mconcat
-  [ link_
-    [ rel_ "apple-touch-icon"
-    , sizes_ "57x57"
-    , relativeHref_ obj "images/favicons/apple-touch-icon-57x57.png" ]
+    [ link_
+        [ rel_ "apple-touch-icon"
+        , sizes_ "57x57"
+        , relativeHref_ obj "images/favicons/apple-touch-icon-57x57.png" ]
 
-  , link_
-    [ rel_ "apple-touch-icon"
-    , sizes_ "60x60"
-    , relativeHref_ obj "images/favicons/apple-touch-icon-60x60.png" ]
+    , link_
+        [ rel_ "apple-touch-icon"
+        , sizes_ "60x60"
+        , relativeHref_ obj "images/favicons/apple-touch-icon-60x60.png" ]
 
-  , link_
-    [ rel_ "apple-touch-icon"
-    , sizes_ "72x72"
-    , relativeHref_ obj "images/favicons/apple-touch-icon-72x72.png" ]
+    , link_
+        [ rel_ "apple-touch-icon"
+        , sizes_ "72x72"
+        , relativeHref_ obj "images/favicons/apple-touch-icon-72x72.png" ]
 
-  , link_
-    [ rel_ "apple-touch-icon"
-    , sizes_ "76x76"
-    , relativeHref_ obj "images/favicons/apple-touch-icon-76x76.png" ]
+    , link_
+        [ rel_ "apple-touch-icon"
+        , sizes_ "76x76"
+        , relativeHref_ obj "images/favicons/apple-touch-icon-76x76.png" ]
 
-  , link_
-    [ rel_ "apple-touch-icon"
-    , sizes_ "114x114"
-    , relativeHref_ obj "images/favicons/apple-touch-icon-114x114.png" ]
+    , link_
+        [ rel_ "apple-touch-icon"
+        , sizes_ "114x114"
+        , relativeHref_ obj "images/favicons/apple-touch-icon-114x114.png" ]
 
-  , link_
-    [ rel_ "apple-touch-icon"
-    , sizes_ "120x120"
-    , relativeHref_ obj "images/favicons/apple-touch-icon-120x120.png" ]
+    , link_
+        [ rel_ "apple-touch-icon"
+        , sizes_ "120x120"
+        , relativeHref_ obj "images/favicons/apple-touch-icon-120x120.png" ]
 
-  , link_
-    [ rel_ "apple-touch-icon"
-    , sizes_ "144x144"
-    , relativeHref_ obj "images/favicons/apple-touch-icon-144x144.png" ]
+    , link_
+        [ rel_ "apple-touch-icon"
+        , sizes_ "144x144"
+        , relativeHref_ obj "images/favicons/apple-touch-icon-144x144.png" ]
 
-  , link_
-    [ rel_ "apple-touch-icon"
-    , sizes_ "152x152"
-    , relativeHref_ obj "images/favicons/apple-touch-icon-152x152.png" ]
+    , link_
+        [ rel_ "apple-touch-icon"
+        , sizes_ "152x152"
+        , relativeHref_ obj "images/favicons/apple-touch-icon-152x152.png" ]
 
-  , link_
-    [ rel_ "apple-touch-icon"
-    , sizes_ "180x180"
-    , relativeHref_ obj "images/favicons/apple-touch-icon-180x180.png" ]
+    , link_
+        [ rel_ "apple-touch-icon"
+        , sizes_ "180x180"
+        , relativeHref_ obj "images/favicons/apple-touch-icon-180x180.png" ]
 
-  -- Generic
-  , link_
-    [ rel_ "icon"
-    , sizes_ "16x16"
-    , type_ "image/png"
-    , relativeHref_ obj "images/favicons/favicon-16x16.png" ]
+    -- Generic
+    , link_
+        [ rel_ "icon"
+        , sizes_ "16x16"
+        , type_ "image/png"
+        , relativeHref_ obj "images/favicons/favicon-16x16.png" ]
 
-  , link_
-    [ rel_ "icon"
-    , sizes_ "32x32"
-    , type_ "image/png"
-    , relativeHref_ obj "images/favicons/favicon-32x32.png" ]
+    , link_
+        [ rel_ "icon"
+        , sizes_ "32x32"
+        , type_ "image/png"
+        , relativeHref_ obj "images/favicons/favicon-32x32.png" ]
 
-  , link_
-    [ rel_ "icon"
-    , sizes_ "96x96"
-    , type_ "image/png"
-    , relativeHref_ obj "images/favicons/favicon-96x96.png" ]
+    , link_
+        [ rel_ "icon"
+        , sizes_ "96x96"
+        , type_ "image/png"
+        , relativeHref_ obj "images/favicons/favicon-96x96.png" ]
 
-  , link_
-    [ rel_ "icon"
-    , sizes_ "194x194"
-    , type_ "image/png"
-    , relativeHref_ obj "images/favicons/favicon-194x194.png" ]
+    , link_
+        [ rel_ "icon"
+        , sizes_ "194x194"
+        , type_ "image/png"
+        , relativeHref_ obj "images/favicons/favicon-194x194.png" ]
 
-  -- Android
-  , link_
-    [ rel_ "icon"
-    , sizes_ "192x192"
-    , type_ "image/png"
-    , relativeHref_ obj "images/favicons/android-chrome-192x192.png" ]
+    -- Android
+    , link_
+        [ rel_ "icon"
+        , sizes_ "192x192"
+        , type_ "image/png"
+        , relativeHref_ obj "images/favicons/android-chrome-192x192.png" ]
 
-  -- Manifest
-  , link_
-    [ rel_ "manifest"
-    , relativeHref_ obj "images/favicons/manifest.json" ]
+    -- Manifest
+    , link_
+        [ rel_ "manifest"
+        , relativeHref_ obj "images/favicons/manifest.json" ]
 
-  -- Ico format
-  , link_
-    [ rel_ "shortcut icon"
-    , relativeHref_ obj "images/favicons/favicon.ico" ]
+    -- Ico format
+    , link_
+        [ rel_ "shortcut icon"
+        , relativeHref_ obj "images/favicons/favicon.ico" ]
 
-  -- Meta
-  , meta_
-    [ name_ "msapplication-TileColor"
-    , content_ "#ffffff" ]
+    -- Meta
+    , meta_
+        [ name_ "msapplication-TileColor"
+        , content_ "#ffffff" ]
 
-  , meta_
-    [ name_ "msapplication-TileImage"
-    , content_ "{{pathToRoot}}images/favicons/mstile-144x144.png" ]
+    , meta_
+        [ name_ "msapplication-TileImage"
+        , content_ "{{pathToRoot}}images/favicons/mstile-144x144.png" ]
 
-  , meta_
-    [ name_ "msapplication-config"
-    , content_ "{{pathToRoot}}images/favicons/browserconfig.xml" ]
+    , meta_
+        [ name_ "msapplication-config"
+        , content_ "{{pathToRoot}}images/favicons/browserconfig.xml" ]
 
-  , meta_
-    [ name_ "theme-color"
-    , content_ "#ffffff" ]
+    , meta_
+        [ name_ "theme-color"
+        , content_ "#ffffff" ]
 
-  ]
+    ]

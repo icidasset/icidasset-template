@@ -1,9 +1,9 @@
 module Shikensu.Functions
-  ( frontmatter
-  , frontmatterDef
-  , lowerCaseBasename
-  , lowerCaseBasenameDef
-  ) where
+    ( frontmatter
+    , frontmatterDef
+    , lowerCaseBasename
+    , lowerCaseBasenameDef
+    ) where
 
 import Data.ByteString (ByteString)
 import Data.Frontmatter (IResult(..), parseFrontmatter)
@@ -26,14 +26,14 @@ frontmatter = fmap frontmatterDef
 
 frontmatterDef :: Definition -> Definition
 frontmatterDef def =
-  let
-    union         = (flip HashMap.union) (metadata def)
-    (yaml, text)  = extractFrontmatter (content def)
-  in
-    def {
-      content   = text,
-      metadata  = maybe (metadata def) (union . frontmatterDecoder) yaml
-    }
+    let
+        union         = (flip HashMap.union) (metadata def)
+        (yaml, text)  = extractFrontmatter (content def)
+    in
+        def {
+            content   = text,
+            metadata  = maybe (metadata def) (union . frontmatterDecoder) yaml
+        }
 
 
 lowerCaseBasename :: Dictionary -> Dictionary
@@ -42,12 +42,12 @@ lowerCaseBasename = fmap lowerCaseBasenameDef
 
 lowerCaseBasenameDef :: Definition -> Definition
 lowerCaseBasenameDef def =
-  def {
-    basename = basename def
-      |> Text.pack
-      |> Text.toLower
-      |> Text.unpack
-  }
+    def {
+        basename = basename def
+            |> Text.pack
+            |> Text.toLower
+            |> Text.unpack
+    }
 
 
 
@@ -56,18 +56,18 @@ lowerCaseBasenameDef def =
 
 extractFrontmatter :: Maybe ByteString -> (Maybe ByteString, Maybe ByteString)
 extractFrontmatter maybeDoc =
-  case maybeDoc of
-    Just doc ->
-      case parseFrontmatter doc of
-        Done text yaml  -> (Just yaml, Just text)
-        _               -> (Nothing, Just doc)
+    case maybeDoc of
+        Just doc ->
+            case parseFrontmatter doc of
+                Done text yaml  -> (Just yaml, Just text)
+                _               -> (Nothing, Just doc)
 
-    Nothing ->
-      (Nothing, Nothing)
+        Nothing ->
+            (Nothing, Nothing)
 
 
 frontmatterDecoder :: ByteString -> Metadata
 frontmatterDecoder yaml =
-  yaml
-    |> Yaml.decode
-    |> fromMaybe (HashMap.empty)
+    yaml
+        |> Yaml.decode
+        |> fromMaybe (HashMap.empty)

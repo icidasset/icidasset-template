@@ -1,16 +1,15 @@
 {-# LANGUAGE FlexibleContexts #-}
 module Utilities
-  ( lsequence
-  , process
+    ( lsequence
+    , process
 
-  , (↩)
-  , (⚡)
-  , (⚡⚡)
-  , (<&>)
-  , pathToRootForProxy
-  , prismScript_
-  ) where
-
+    , (↩)
+    , (⚡)
+    , (⚡⚡)
+    , (<&>)
+    , pathToRootForProxy
+    , prismScript_
+    ) where
 
 import Data.Aeson (FromJSON, ToJSON, Result(..), Value, fromJSON)
 import Data.Text (Text)
@@ -37,24 +36,22 @@ rootDir = canonicalizePath "./"
 
 
 
-
 -- IO
 
 
 lsequence :: Monad m => [(String, m a)] -> m [(String, a)]
 lsequence list =
-  let
-    unzipped = List.unzip list
-  in
-    unzipped
-      |> sequence . snd
-      |> fmap (List.zip . fst $ unzipped)
+    let
+        unzipped = List.unzip list
+    in
+        unzipped
+            |> sequence . snd
+            |> fmap (List.zip . fst $ unzipped)
 
 
 process :: [Pattern] -> IO Dictionary
 process patterns =
-  rootDir >>= list patterns
-
+    rootDir >>= list patterns
 
 
 
@@ -72,18 +69,18 @@ infixl 6 ⚡⚡
 
 (⚡) :: (FromJSON a, ToJSON a) => Metadata -> Text -> Maybe a
 (⚡) obj key =
-  key
-    |> (flip HashMap.lookup) obj
-    |> fmap fromJSON
-    |> fmap fromResult
+    key
+        |> (flip HashMap.lookup) obj
+        |> fmap fromJSON
+        |> fmap fromResult
 
 
 (⚡⚡) :: (FromJSON a, ToJSON a) => Metadata -> Text -> a
 (⚡⚡) obj key = case (obj ⚡ key) of
-  Just x  -> x
-  Nothing -> error $
-    "Could not find the key `" ++ (Text.unpack key)         ++ "` " ++
-    "on the metadata object `" ++ (aesonObjectToString obj) ++ "` using (⚡⚡)"
+    Just x  -> x
+    Nothing -> error $
+        "Could not find the key `" ++ (Text.unpack key)         ++ "` " ++
+        "on the metadata object `" ++ (aesonObjectToString obj) ++ "` using (⚡⚡)"
 
 
 (<&>) :: Functor f => f a -> (a -> b) -> f b
@@ -92,23 +89,22 @@ infixl 6 ⚡⚡
 
 pathToRootForProxy :: Dictionary -> Dictionary
 pathToRootForProxy =
-  fmap $ \def ->
-    if basename def == "200" then
-      def { pathToRoot = "/" }
-    else
-      def
+    fmap $ \def ->
+        if basename def == "200" then
+            def { pathToRoot = "/" }
+        else
+            def
 
 
 prismScript_ :: Text -> Html ()
 prismScript_ name =
-  let
-    prefix = "https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/" :: Text
-    suffix = ".min.js" :: Text
-  in
-    script_
-      [ src_ (Text.concat [ prefix, name, suffix ]) ]
-      ( "" )
-
+    let
+        prefix = "https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/" :: Text
+        suffix = ".min.js" :: Text
+    in
+        script_
+            [ src_ (Text.concat [ prefix, name, suffix ]) ]
+            ( "" )
 
 
 
@@ -117,9 +113,9 @@ prismScript_ name =
 
 fromResult :: ToJSON a => Result a -> a
 fromResult result =
-  case result of
-    Success x -> x
-    Error err -> error err
+    case result of
+        Success x -> x
+        Error err -> error err
 
 
 aesonObjectToString :: Aeson.Object -> String
