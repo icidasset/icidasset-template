@@ -11,7 +11,7 @@ import Lucid.Html5
 import Types
 import Utilities ((↩))
 
-import qualified Data.Text as Text (empty, intercalate, pack, replace)
+import qualified Data.Text as Text (append, empty, intercalate, pack, replace)
 
 
 block_ = make "div" "block"
@@ -39,6 +39,13 @@ markdownWithoutBlocks_ markdown =
     |> Text.replace "<p>" ""
     |> Text.replace "</p>" ""
     |> toHtmlRaw
+
+
+relativeScript :: String -> String -> Html ()
+relativeScript_ pathPrefix path =
+    script_
+        [ src_ $ Text.append pathPrefix path ]
+        ( "" )
 
 
 use_ :: EmptyElement
