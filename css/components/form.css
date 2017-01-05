@@ -40,6 +40,10 @@ form {
     &.has-full-width {
       width: 100%;
     }
+
+    &[disabled] {
+      color: $base04;
+    }
   }
 
   & textarea {
@@ -61,6 +65,10 @@ form {
 
     &.is-subtle {
       color: $base04;
+    }
+
+    &.is-disabled {
+      text-decoration: line-through;
     }
   }
 
