@@ -17,4 +17,12 @@ button {
   &:focus {
     outline: 0;
   }
+
+  &.button--small {
+    height: 2gr;
+    line-height: 2gr;
+    padding: 0 0.5gr;
+  }
+
+
 }

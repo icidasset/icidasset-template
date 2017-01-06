@@ -10,6 +10,7 @@
 @import "base/queries";
 @import "base/base";
 
+@import "components/action";
 @import "components/block";
 @import "components/blockquote";
 @import "components/blocks";
