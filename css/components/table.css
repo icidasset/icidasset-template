@@ -1,0 +1,30 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+
+  & thead {
+    font-size: 0.8rem;
+  }
+
+  & thead th {
+    border-bottom: 2px solid $base06;
+    font-weight: 600;
+    padding: .5gr;
+  }
+
+  & tbody {
+    font-size: 0.85rem;
+    text-align: center
+  }
+
+  & tbody td {
+    border-bottom: 1px solid $base07;
+    border-right: 1px solid $base07;
+    padding: 1gr 0;
+
+    &:first-child {
+      border-left: 1px solid $base07;
+    }
+  }
+
+}

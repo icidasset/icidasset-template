@@ -10,6 +10,7 @@ button {
   display: inline-block;
   font-size: .75rem;
   font-weight: 700;
+  overflow: hidden;
   padding: 1.125em;
   padding-top: calc(1.125em + 1px);
   text-transform: uppercase;
@@ -19,9 +20,11 @@ button {
   }
 
   &.button--small {
-    height: 2gr;
-    line-height: 2gr;
-    padding: 0 0.5gr;
+    border-width: 1px;
+    font-size: .65rem;
+    height: 1.35rem;
+    line-height: 1.45rem;
+    padding: 0 0.325rem;
   }
 
 
