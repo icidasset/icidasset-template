@@ -3,11 +3,6 @@ module Utils exposing (..)
 import Json.Decode
 
 
-addToList : a -> List a
-addToList =
-    (flip (::)) []
-
-
 jsonErrorsDecoder : Json.Decode.Decoder String
 jsonErrorsDecoder =
     Json.Decode.field "message" Json.Decode.string
