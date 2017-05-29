@@ -5,6 +5,9 @@ import Lucid.Base (Attribute, Html)
 import Shikensu.Types (Metadata)
 
 
+-- Aliases
+
+
 type Element = [Attribute] -> Html () -> Html ()
 type EmptyElement = [Attribute] -> Html ()
 

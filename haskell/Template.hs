@@ -10,6 +10,7 @@ module Template
   , module Flow
   , module Lucid.Base
   , module Lucid.Html5
+  , module Shikensu.Utilities
   , module Text
   , module Types
   , module Utilities
@@ -22,5 +23,6 @@ import Elements
 import Flow
 import Lucid.Base (Attribute, Html, makeAttribute, toHtml)
 import Lucid.Html5
+import Shikensu.Utilities ((~>), (!~>))
 import Types
-import Utilities ((↩), (⚡), (⚡⚡), prismScript_)
+import Utilities ((↩), prismScript_)

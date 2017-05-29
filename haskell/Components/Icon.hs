@@ -8,7 +8,7 @@ template :: String -> Partial
 template name =
     \obj ->
         let
-            pathToRoot  = obj ⚡⚡ "pathToRoot" :: Text
+            pathToRoot  = obj !~> "pathToRoot" :: Text
             path        = Text.append pathToRoot "images/icons.svg"
             name_       = Text.pack name
         in

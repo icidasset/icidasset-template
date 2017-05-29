@@ -8,12 +8,12 @@ import qualified Data.Text as Text (concat)
 template :: Partial
 template obj =
     let
-        parentPath = obj ⚡⚡ "parentPath" :: Maybe Text
-        category   = obj ⚡ "category" :: Maybe String
+        parentPath = obj !~> "parentPath" :: Maybe Text
+        category   = obj ~> "category" :: Maybe String
 
         logoHref = Text.concat
-            [ obj ⚡⚡ "pathToRoot"
-            , if obj ⚡⚡ "basename" /= "index" then "../" else ""
+            [ obj !~> "pathToRoot"
+            , if obj !~> "basename" /= "index" then "../" else ""
             ]
     in
         header_

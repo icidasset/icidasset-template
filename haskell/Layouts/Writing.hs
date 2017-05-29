@@ -11,7 +11,7 @@ template obj children =
             [] ↩
             [ h1_
                 [] ↩
-                [ toHtml (obj ⚡⚡ "title" :: String) ]
+                [ toHtml (obj !~> "title" :: String) ]
 
             , children
             ]

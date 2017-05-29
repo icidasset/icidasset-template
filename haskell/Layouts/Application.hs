@@ -8,8 +8,8 @@ import qualified Data.Text as Text (append, empty, replace, toLower)
 template :: Template
 template obj children =
     let
-        title     = obj ⚡ "title" :: Maybe Text
-        workdir   = obj ⚡ "workingDirname" :: Maybe Text
+        title     = obj ~> "title" :: Maybe Text
+        workdir   = obj ~> "workingDirname" :: Maybe Text
         workspace = case workdir of
             Just x  -> (Text.replace "src/" "" .> Text.toLower) x
             Nothing -> (Text.empty)
