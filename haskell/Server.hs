@@ -1,4 +1,4 @@
-module Main where
+module Server where
 
 import Control.Monad.IO.Class (liftIO)
 import Flow
@@ -6,17 +6,12 @@ import Network.HTTP.Types (status200, status404)
 import Network.HTTP.Types.Header (hAccept)
 import Network.Wai
 import Network.Wai.Application.Static
-import Network.Wai.Handler.Warp (run)
 import System.Directory (doesFileExist)
 
 import qualified Data.Binary.Builder as Builder (empty, putStringUtf8)
 import qualified Data.List as List (elem, filter, head, last)
 import qualified Data.Text as Text (isInfixOf, isSuffixOf, pack)
 import qualified Data.Tuple as Tuple (snd)
-
-
-main :: IO ()
-main = run 8080 app
 
 
 app :: Application
