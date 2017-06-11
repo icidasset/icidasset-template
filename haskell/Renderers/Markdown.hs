@@ -6,7 +6,6 @@ import Data.Text.Encoding (decodeUtf8, encodeUtf8)
 import Shikensu.Types (Definition, content)
 
 
-
 -- FUNCTIONS
 
 

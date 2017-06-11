@@ -1,6 +1,7 @@
 module Components.Blocks.Filler where
 
 import Template
+
 import qualified Components.Icon
 import qualified Data.Text as Text (append, intercalate)
 

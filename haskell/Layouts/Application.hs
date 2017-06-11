@@ -1,6 +1,7 @@
 module Layouts.Application where
 
 import Template
+
 import qualified Components.Header
 import qualified Data.Text as Text (append, empty, replace, toLower)
 

@@ -1,6 +1,7 @@
 module Components.Header where
 
 import Template
+
 import qualified Components.Icon
 import qualified Data.Text as Text (concat)
 

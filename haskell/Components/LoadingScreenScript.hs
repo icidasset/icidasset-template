@@ -1,6 +1,7 @@
 module Components.LoadingScreenScript where
 
 import Template
+
 import qualified Components.LoadingScreen
 import qualified Data.Text as Text (append, concat)
 import qualified Data.Text.Lazy as LazyText (toStrict)

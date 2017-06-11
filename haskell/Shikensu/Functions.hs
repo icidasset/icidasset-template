@@ -11,7 +11,6 @@ import Data.Maybe (fromMaybe)
 import Flow
 import Shikensu.Types
 
-import qualified Data.ByteString as B (empty)
 import qualified Data.HashMap.Strict as HashMap (empty, union)
 import qualified Data.Text as Text (pack, toLower, unpack)
 import qualified Data.Yaml as Yaml (decode)

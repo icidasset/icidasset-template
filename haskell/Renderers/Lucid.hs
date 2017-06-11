@@ -1,7 +1,6 @@
 module Renderers.Lucid where
 
 import Data.ByteString (ByteString)
-import Data.Text.Encoding (decodeUtf8, encodeUtf8)
 import Flow
 import Shikensu.Types
 import Types
@@ -9,8 +8,7 @@ import Types
 import qualified Data.ByteString as BS (empty)
 import qualified Data.ByteString.Lazy as BS.Lazy (toStrict)
 import qualified Data.HashMap.Strict as HashMap (lookup)
-import qualified Lucid.Base as Lucid (renderBS, toHtml, toHtmlRaw)
-
+import qualified Lucid.Base as Lucid (renderBS, toHtmlRaw)
 
 
 -- FUNCTIONS
