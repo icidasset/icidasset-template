@@ -133,6 +133,17 @@ ul {
   & li:before { content: "•"; }
 }
 
+
+/**
+ * Other
+ */
 .with-monospace-font {
   @mixin monospace-font;
+}
+
+
+hr {
+  border: 0;
+  border-top: 1px solid color($base06 a(.9));
+  margin: 3gr 0;
 }
