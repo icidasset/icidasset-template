@@ -27,4 +27,32 @@ table {
     }
   }
 
+  /**
+   * Borderless
+   */
+  &.table--borderless {
+    & thead th,
+    & tbody td {
+      border: 0;
+    }
+  }
+
+  /**
+   * Two columns
+   * > Ensure that they have an equal width
+   */
+  &.table--2_way {
+    & thead th,
+    & tbody td {
+      width: 50%;
+    }
+  }
+
+  /**
+   * Padded
+   */
+  &.table--padded tbody td {
+    padding: 7gr 0;
+  }
+
 }
