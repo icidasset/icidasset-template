@@ -50,6 +50,11 @@ template obj children =
                     )
                     ]
 
+                , link_
+                    [ rel_ "stylesheet"
+                    , href_ "//cdn.jsdelivr.net/font-hack/2.020/css/hack-extended.min.css"
+                    ]
+
                 , faviconsTemplate obj
                 ]
 
