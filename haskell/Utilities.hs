@@ -3,8 +3,8 @@ module Utilities
     ( (<&>)
     , (?~>)
     , (↩)
+    , highlightScript_
     , pathToRootForProxy
-    , prismScript_
     ) where
 
 import Data.Aeson (FromJSON, ToJSON)
@@ -44,10 +44,10 @@ pathToRootForProxy =
             def
 
 
-prismScript_ :: Text -> Html ()
-prismScript_ name =
+highlightScript_ :: Text -> Html ()
+highlightScript_ name =
     let
-        prefix = "https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/" :: Text
+        prefix = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/" :: Text
         suffix = ".min.js" :: Text
     in
         script_

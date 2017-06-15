@@ -25,4 +25,4 @@ import Lucid.Base (Attribute, Html, makeAttribute, toHtml)
 import Lucid.Html5
 import Shikensu.Utilities ((!~>), (~>))
 import Types
-import Utilities ((↩), prismScript_)
+import Utilities ((↩), highlightScript_)

@@ -16,12 +16,12 @@ template obj children =
             , children
             ]
 
-        , prismScript_ "prism"
-        , prismScript_ "components/prism-bash"
-        , prismScript_ "components/prism-elixir"
-        , prismScript_ "components/prism-haskell"
-        , prismScript_ "components/prism-javascript"
-        , prismScript_ "components/prism-json"
-        , prismScript_ "components/prism-markdown"
-        , prismScript_ "components/prism-yaml"
+        , highlightScript_ "highlight"
+        , highlightScript_ "languages/bash"
+        , highlightScript_ "languages/elixir"
+        , highlightScript_ "languages/haskell"
+        , highlightScript_ "languages/javascript"
+        , highlightScript_ "languages/json"
+        , highlightScript_ "languages/markdown"
+        , highlightScript_ "languages/yaml"
         ]

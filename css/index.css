@@ -4,7 +4,7 @@
 @import "abstract/variables";
 @import "abstract/mixins";
 
-@import "vendor/prism.css";
+@import "vendor/highlight.css";
 
 @import "base/custom-selectors";
 @import "base/queries";

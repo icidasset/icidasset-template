@@ -1,22 +1,20 @@
-code {
+code, code.hljs {
+  @mixin monospace-font;
   background: color($base07 a(.85));
-}
-
-pre[class*="language-"] {
-  background: color($base07 a(.425));
-}
-
-pre[class*="language-"] {
   font-size: .95em;
+  line-height: 1.4;
+  padding: .2em .25em;
+}
+
+pre code, pre code.hljs {
+  background: color($base07 a(.425));
+  direction: ltr;
+  hyphens: none;
   margin: 0 0 1.5rem;
   padding: 1.65em;
-
-  & code {
-    background: none;
-  }
-}
-
-:not(pre) > code {
-  font-size: .95em;
-  padding: .2em .25em;
+  tab-size: 4;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
 }
