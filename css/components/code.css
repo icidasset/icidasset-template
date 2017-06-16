@@ -9,6 +9,7 @@ code, code.hljs {
 pre code, pre code.hljs {
   background: color($base07 a(.425));
   direction: ltr;
+  display: block;
   hyphens: none;
   margin: 0 0 1.5rem;
   padding: 1.65em;
