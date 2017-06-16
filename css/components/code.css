@@ -12,6 +12,8 @@ pre code, pre code.hljs {
   display: block;
   hyphens: none;
   margin: 0 0 1.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
   padding: 1.65em;
   tab-size: 4;
   text-align: left;

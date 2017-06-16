@@ -17,11 +17,14 @@ template obj children =
             ]
 
         , highlightScript_ "highlight"
-        , highlightScript_ "languages/bash"
         , highlightScript_ "languages/elixir"
+        , highlightScript_ "languages/elm"
         , highlightScript_ "languages/haskell"
         , highlightScript_ "languages/javascript"
         , highlightScript_ "languages/json"
         , highlightScript_ "languages/markdown"
+        , highlightScript_ "languages/shell"
         , highlightScript_ "languages/yaml"
+
+        , script_ [] "hljs.initHighlightingOnLoad();"
         ]
