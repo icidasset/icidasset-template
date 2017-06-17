@@ -24,9 +24,8 @@
     }
 
     &.has-content {
-      background: transparent;
-      box-shadow: 0 0 0 2px color($base06 a(.5)) inset;
-      color: $base05;
+      background: color($accent a(0.06));
+      color: color($accent a(0.65) saturation(-27.5%));
       display: block;
     }
 

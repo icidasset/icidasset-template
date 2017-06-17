@@ -58,12 +58,10 @@ h3 {
  */
 a {
   color: inherit;
-  cursor: pointer;
   text-decoration: none;
 
-  &.is-colored {
-    color: $link-color;
-  }
+  &[href] { cursor: pointer; }
+  &.is-colored { color: $link-color; }
 }
 
 p a,
