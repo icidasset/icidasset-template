@@ -9,7 +9,7 @@ import Data.ByteString (ByteString)
 import Data.Frontmatter (IResult(..), parseFrontmatter)
 import Data.Maybe (fromMaybe)
 import Flow
-import Shikensu.Types
+import Shikensu (Definition(..), Dictionary(..), Metadata)
 
 import qualified Data.HashMap.Strict as HashMap (empty, union)
 import qualified Data.Text as Text (pack, toLower, unpack)

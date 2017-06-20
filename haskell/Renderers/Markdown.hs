@@ -3,7 +3,7 @@ module Renderers.Markdown where
 import CMark (commonmarkToHtml)
 import Data.ByteString (ByteString)
 import Data.Text.Encoding (decodeUtf8, encodeUtf8)
-import Shikensu.Types (Definition, content)
+import Shikensu (Definition(..))
 
 
 -- FUNCTIONS

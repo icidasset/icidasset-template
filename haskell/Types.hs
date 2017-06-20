@@ -2,7 +2,7 @@ module Types where
 
 import Data.HashMap.Strict (HashMap)
 import Lucid.Base (Attribute, Html)
-import Shikensu.Types (Metadata)
+import Shikensu (Metadata)
 
 
 -- Aliases

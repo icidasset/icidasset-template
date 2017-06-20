@@ -2,7 +2,7 @@ module Renderers.Lucid where
 
 import Data.ByteString (ByteString)
 import Flow
-import Shikensu.Types
+import Shikensu (Definition(..))
 import Types
 
 import qualified Data.ByteString as BS (empty)

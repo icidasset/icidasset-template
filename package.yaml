@@ -14,7 +14,7 @@ dependencies:
   - frontmatter == 0.1.*
   - http-types == 0.9.*
   - lucid == 2.9.*
-  - shikensu == 0.3.3
+  - shikensu == 0.3.*
   - text == 1.*
   - unordered-containers == 0.2.*
   - wai == 3.2.*

@@ -6,7 +6,7 @@ module Attributes where
 import Data.Text (Text)
 import Lucid.Base (Attribute)
 import Lucid.Html5 (href_)
-import Shikensu.Types (Metadata)
+import Shikensu (Metadata)
 import Shikensu.Utilities ((!~>))
 import Types
 

@@ -1,7 +1,6 @@
 {-# LANGUAGE FlexibleContexts #-}
 module Utilities
-    ( (<&>)
-    , (?~>)
+    ( (?~>)
     , (↩)
     , highlightScript_
     , pathToRootForProxy
@@ -11,7 +10,7 @@ import Data.Aeson (FromJSON, ToJSON)
 import Data.Text (Text)
 import Lucid.Base (Html)
 import Lucid.Html5 (script_, src_)
-import Shikensu.Types
+import Shikensu
 import Shikensu.Utilities ((~>))
 
 import qualified Data.Text as Text (concat)
@@ -25,10 +24,6 @@ infix 6 ↩
 
 (↩) :: (Monoid b) => (b -> b) -> [b] -> b
 (↩) h = h . mconcat
-
-
-(<&>) :: Functor f => f a -> (a -> b) -> f b
-(<&>) = flip fmap
 
 
 (?~>) :: (FromJSON a, ToJSON a) => Maybe Metadata -> Text -> Maybe a
