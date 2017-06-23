@@ -14,8 +14,16 @@ import qualified Shikensu (Metadata)
 -- 🍯
 
 
-template :: [Attribute] -> Text -> Text -> Shikensu.Metadata -> Html
-template attributes icon label obj =
+data Filler =
+    Filler
+        { icon :: Text
+        , label :: Text
+        , metadata :: Shikensu.Metadata
+        }
+
+
+template :: [Attribute] -> Filler -> Html
+template attributes (Filler icon label obj) =
     nodeWithClass
         "a"
         "block block--filler"
