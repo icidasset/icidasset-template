@@ -18,7 +18,7 @@ catalogRenderer :: TemplateCatalog -> Definition -> Maybe ByteString
 catalogRenderer catalog def =
     let
         name =
-            if length (dirname def) > 0 then
+            if not (null $ dirname def) then
                 dirname def
             else
                 basename def

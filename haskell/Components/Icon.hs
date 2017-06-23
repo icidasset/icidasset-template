@@ -1,22 +1,30 @@
 module Components.Icon where
 
-import Template
+import Data.Text (Text)
+import Html
+import Html.Attributes
+import Prelude hiding (span)
+import Shikensu.Utilities
+
 import qualified Data.Text as Text (append, intercalate, pack)
+import qualified Shikensu (Metadata)
 
 
-template :: String -> Partial
-template name =
-    \obj ->
-        let
-            pathToRoot  = obj !~> "pathToRoot" :: Text
-            path        = Text.append pathToRoot "images/icons.svg"
-            name_       = Text.pack name
-        in
-            span_
-                [ class_ (Text.append "icon icon--" name_) ] ↩
-                [ svg_
-                    [ class_ "icon__cnt" ] ↩
-                    [ use_
-                        [ makeAttribute "xlink:href" (Text.intercalate "#" [path, name_]) ]
-                    ]
+-- 🍯
+
+
+template :: Text -> Shikensu.Metadata -> Html
+template name obj =
+    let
+        pathToRoot  = obj !~> "pathToRoot"
+        path        = Text.append pathToRoot "images/icons.svg"
+    in
+        span
+            [ cls (Text.append "icon icon--" name) ]
+            [ svg
+                [ cls "icon__cnt" ]
+                [ use
+                    [ attr "xlink:href" $ Text.intercalate "#" [ path, name ] ]
+                    []
+                ]
             ]

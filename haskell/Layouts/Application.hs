@@ -1,67 +1,79 @@
 module Layouts.Application where
 
-import Template
+import Data.Monoid ((<>))
+import Data.Text (Text)
+import Flow
+import Html
+import Html.Attributes hiding (title)
+import Html.Custom
+import Prelude hiding (div, head)
+import Shikensu.Utilities
 
 import qualified Components.Header
 import qualified Data.Text as Text (append, empty, replace, toLower)
+import qualified Shikensu (Metadata)
 
 
-template :: Template
-template obj children =
+template :: Shikensu.Metadata -> Html -> Html
+template obj child =
     let
-        title     = obj ~> "title" :: Maybe Text
-        workdir   = obj ~> "workingDirname" :: Maybe Text
-        workspace = case workdir of
-            Just x  -> (Text.replace "src/" "" .> Text.toLower) x
-            Nothing -> (Text.empty)
+        workspace = case obj ~> "workingDirname" of
+            Just x  -> x |> Text.replace "src/" "" |> Text.toLower
+            Nothing -> Text.empty
     in
-        [ doctype_
-        , html_
-            [] ↩
-            [ head_
-                [] ↩
-                [ meta_ [ charset_ "utf-8" ]
-                , meta_ [ httpEquiv_ "Content-Type", content_ "text/html; charset=utf-8" ]
-                , meta_ [ httpEquiv_ "X-UA-Compatible", content_ "IE=edge" ]
-                , meta_ [ name_ "viewport", content_ "width=device-width, initial-scale=1" ]
+        [ doctype
+        , html
+            []
+            [ -- <head>
+              --
+              head
+                []
+                [ meta [ charset "utf-8" ] []
+                , meta [ httpEquiv "Content-Type", content "text/html; charset=utf-8" ] []
+                , meta [ httpEquiv "X-UA-Compatible", content "IE=edge" ] []
+                , meta [ name "viewport", content "width=device-width, initial-scale=1" ] []
 
-                , title_
-                    (
-                        Text.append
-                            ( case title of
+                , title
+                    []
+                    [ Text.append
+                            ( case obj ~> "title" of
                                 Just x -> Text.append x " – "
                                 Nothing -> ""
                             )
-                            ( "I.A." )
+                            "I.A."
 
-                        |> toHtml
-                    )
-
-                , link_
-                    [ rel_ "stylesheet"
-                    , relativeHref_ obj "application.css"
+                        |> text
                     ]
 
-                , link_
-                    [ rel_ "stylesheet"
-                    , href_ ( Text.append
-                        "https://fonts.googleapis.com/css?family="
+                , link
+                    [ rel "stylesheet"
+                    , hrefRelative obj "application.css"
+                    ]
+                    []
+
+                , link
+                    [ rel "stylesheet"
+                    , href $
+                        "https://fonts.googleapis.com/css?family=" <>
                         "Playfair+Display:400,700|Nunito+Sans:400,600,700,400italic,700italic"
-                    )
                     ]
+                    []
 
-                , link_
-                    [ rel_ "stylesheet"
-                    , href_ "//cdn.jsdelivr.net/font-hack/2.020/css/hack-extended.min.css"
+                , link
+                    [ rel "stylesheet"
+                    , href "//cdn.jsdelivr.net/font-hack/2.020/css/hack-extended.min.css"
                     ]
+                    []
 
-                , faviconsTemplate obj
+                , favicons obj
                 ]
 
-            , body_
-                [ makeAttribute "workspace" workspace ] ↩
+            -- <body>
+            --
+            , body
+                [ attr "workspace" workspace ]
                 [ Components.Header.template obj
-                , children
+                , child
                 ]
 
             ]
@@ -70,110 +82,150 @@ template obj children =
         |> mconcat
 
 
-faviconsTemplate :: Partial
-faviconsTemplate obj = mconcat
-    [ link_
-        [ rel_ "apple-touch-icon"
-        , sizes_ "57x57"
-        , relativeHref_ obj "images/favicons/apple-touch-icon-57x57.png" ]
+favicons :: Shikensu.Metadata -> Html
+favicons obj = mconcat
+    [ link
+        [ rel "apple-touch-icon"
+        , sizes "57x57"
+        , hrefRelative obj "images/favicons/apple-touch-icon-57x57.png"
+        ]
+        []
 
-    , link_
-        [ rel_ "apple-touch-icon"
-        , sizes_ "60x60"
-        , relativeHref_ obj "images/favicons/apple-touch-icon-60x60.png" ]
+    , link
+        [ rel "apple-touch-icon"
+        , sizes "60x60"
+        , hrefRelative obj "images/favicons/apple-touch-icon-60x60.png"
+        ]
+        []
 
-    , link_
-        [ rel_ "apple-touch-icon"
-        , sizes_ "72x72"
-        , relativeHref_ obj "images/favicons/apple-touch-icon-72x72.png" ]
+    , link
+        [ rel "apple-touch-icon"
+        , sizes "72x72"
+        , hrefRelative obj "images/favicons/apple-touch-icon-72x72.png"
+        ]
+        []
 
-    , link_
-        [ rel_ "apple-touch-icon"
-        , sizes_ "76x76"
-        , relativeHref_ obj "images/favicons/apple-touch-icon-76x76.png" ]
+    , link
+        [ rel "apple-touch-icon"
+        , sizes "76x76"
+        , hrefRelative obj "images/favicons/apple-touch-icon-76x76.png"
+        ]
+        []
 
-    , link_
-        [ rel_ "apple-touch-icon"
-        , sizes_ "114x114"
-        , relativeHref_ obj "images/favicons/apple-touch-icon-114x114.png" ]
+    , link
+        [ rel "apple-touch-icon"
+        , sizes "114x114"
+        , hrefRelative obj "images/favicons/apple-touch-icon-114x114.png"
+        ]
+        []
 
-    , link_
-        [ rel_ "apple-touch-icon"
-        , sizes_ "120x120"
-        , relativeHref_ obj "images/favicons/apple-touch-icon-120x120.png" ]
+    , link
+        [ rel "apple-touch-icon"
+        , sizes "120x120"
+        , hrefRelative obj "images/favicons/apple-touch-icon-120x120.png"
+        ]
+        []
 
-    , link_
-        [ rel_ "apple-touch-icon"
-        , sizes_ "144x144"
-        , relativeHref_ obj "images/favicons/apple-touch-icon-144x144.png" ]
+    , link
+        [ rel "apple-touch-icon"
+        , sizes "144x144"
+        , hrefRelative obj "images/favicons/apple-touch-icon-144x144.png"
+        ]
+        []
 
-    , link_
-        [ rel_ "apple-touch-icon"
-        , sizes_ "152x152"
-        , relativeHref_ obj "images/favicons/apple-touch-icon-152x152.png" ]
+    , link
+        [ rel "apple-touch-icon"
+        , sizes "152x152"
+        , hrefRelative obj "images/favicons/apple-touch-icon-152x152.png"
+        ]
+        []
 
-    , link_
-        [ rel_ "apple-touch-icon"
-        , sizes_ "180x180"
-        , relativeHref_ obj "images/favicons/apple-touch-icon-180x180.png" ]
+    , link
+        [ rel "apple-touch-icon"
+        , sizes "180x180"
+        , hrefRelative obj "images/favicons/apple-touch-icon-180x180.png"
+        ]
+        []
 
     -- Generic
-    , link_
-        [ rel_ "icon"
-        , sizes_ "16x16"
-        , type_ "image/png"
-        , relativeHref_ obj "images/favicons/favicon-16x16.png" ]
+    , link
+        [ rel "icon"
+        , sizes "16x16"
+        , typ "image/png"
+        , hrefRelative obj "images/favicons/favicon-16x16.png"
+        ]
+        []
 
-    , link_
-        [ rel_ "icon"
-        , sizes_ "32x32"
-        , type_ "image/png"
-        , relativeHref_ obj "images/favicons/favicon-32x32.png" ]
+    , link
+        [ rel "icon"
+        , sizes "32x32"
+        , typ "image/png"
+        , hrefRelative obj "images/favicons/favicon-32x32.png"
+        ]
+        []
 
-    , link_
-        [ rel_ "icon"
-        , sizes_ "96x96"
-        , type_ "image/png"
-        , relativeHref_ obj "images/favicons/favicon-96x96.png" ]
+    , link
+        [ rel "icon"
+        , sizes "96x96"
+        , typ "image/png"
+        , hrefRelative obj "images/favicons/favicon-96x96.png"
+        ]
+        []
 
-    , link_
-        [ rel_ "icon"
-        , sizes_ "194x194"
-        , type_ "image/png"
-        , relativeHref_ obj "images/favicons/favicon-194x194.png" ]
+    , link
+        [ rel "icon"
+        , sizes "194x194"
+        , typ "image/png"
+        , hrefRelative obj "images/favicons/favicon-194x194.png"
+        ]
+        []
 
     -- Android
-    , link_
-        [ rel_ "icon"
-        , sizes_ "192x192"
-        , type_ "image/png"
-        , relativeHref_ obj "images/favicons/android-chrome-192x192.png" ]
+    , link
+        [ rel "icon"
+        , sizes "192x192"
+        , typ "image/png"
+        , hrefRelative obj "images/favicons/android-chrome-192x192.png"
+        ]
+        []
 
     -- Manifest
-    , link_
-        [ rel_ "manifest"
-        , relativeHref_ obj "images/favicons/manifest.json" ]
+    , link
+        [ rel "manifest"
+        , hrefRelative obj "images/favicons/manifest.json"
+        ]
+        []
 
     -- Ico format
-    , link_
-        [ rel_ "shortcut icon"
-        , relativeHref_ obj "images/favicons/favicon.ico" ]
+    , link
+        [ rel "shortcut icon"
+        , hrefRelative obj "images/favicons/favicon.ico"
+        ]
+        []
 
     -- Meta
-    , meta_
-        [ name_ "msapplication-TileColor"
-        , content_ "#ffffff" ]
+    , meta
+        [ name "msapplication-TileColor"
+        , content "#ffffff"
+        ]
+        []
 
-    , meta_
-        [ name_ "msapplication-TileImage"
-        , content_ "{{pathToRoot}}images/favicons/mstile-144x144.png" ]
+    , meta
+        [ name "msapplication-TileImage"
+        , content "{{pathToRoot}}images/favicons/mstile-144x144.png"
+        ]
+        []
 
-    , meta_
-        [ name_ "msapplication-config"
-        , content_ "{{pathToRoot}}images/favicons/browserconfig.xml" ]
+    , meta
+        [ name "msapplication-config"
+        , content "{{pathToRoot}}images/favicons/browserconfig.xml"
+        ]
+        []
 
-    , meta_
-        [ name_ "theme-color"
-        , content_ "#ffffff" ]
+    , meta
+        [ name "theme-color"
+        , content "#ffffff"
+        ]
+        []
 
     ]

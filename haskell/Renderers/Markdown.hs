@@ -3,6 +3,7 @@ module Renderers.Markdown where
 import CMark (commonmarkToHtml)
 import Data.ByteString (ByteString)
 import Data.Text.Encoding (decodeUtf8, encodeUtf8)
+import Flow
 import Shikensu (Definition(..))
 
 
@@ -10,4 +11,8 @@ import Shikensu (Definition(..))
 
 
 renderer :: Definition -> Maybe ByteString
-renderer def = fmap (encodeUtf8 . commonmarkToHtml [] . decodeUtf8) (content def)
+renderer def = fmap markdown (content def)
+
+
+markdown :: ByteString -> ByteString
+markdown = decodeUtf8 .> commonmarkToHtml [] .> encodeUtf8

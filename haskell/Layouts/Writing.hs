@@ -1,30 +1,38 @@
 module Layouts.Writing where
 
-import Template
+import Data.Text (Text)
+import Html
+import Html.Custom
+import Prelude hiding (div)
+import Shikensu.Utilities
+
+import qualified Shikensu (Metadata)
 
 
-template :: Template
-template obj children =
-    container_
-        [] ↩
-        [ article_
-            [] ↩
-            [ h1_
-                [] ↩
-                [ toHtml (obj !~> "title" :: String) ]
+template :: Shikensu.Metadata -> Html -> Html
+template obj child =
+    container
+        []
+        [ article
+            []
+            [ h1
+                []
+                [ text $ obj !~> "title" ]
 
-            , children
+            , child
             ]
 
-        , highlightScript_ "highlight"
-        , highlightScript_ "languages/elixir"
-        , highlightScript_ "languages/elm"
-        , highlightScript_ "languages/haskell"
-        , highlightScript_ "languages/javascript"
-        , highlightScript_ "languages/json"
-        , highlightScript_ "languages/markdown"
-        , highlightScript_ "languages/shell"
-        , highlightScript_ "languages/yaml"
+        , highlightScript "highlight"
+        , highlightScript "languages/elixir"
+        , highlightScript "languages/elm"
+        , highlightScript "languages/haskell"
+        , highlightScript "languages/javascript"
+        , highlightScript "languages/json"
+        , highlightScript "languages/markdown"
+        , highlightScript "languages/shell"
+        , highlightScript "languages/yaml"
 
-        , script_ [] "hljs.initHighlightingOnLoad();"
+        , script
+            []
+            [ raw "hljs.initHighlightingOnLoad();" ]
         ]

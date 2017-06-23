@@ -26,7 +26,7 @@ frontmatter = fmap frontmatterDef
 frontmatterDef :: Definition -> Definition
 frontmatterDef def =
     let
-        union         = (flip HashMap.union) (metadata def)
+        union         = flip HashMap.union (metadata def)
         (yaml, text)  = extractFrontmatter (content def)
     in
         def {
@@ -47,6 +47,15 @@ lowerCaseBasenameDef def =
             |> Text.toLower
             |> Text.unpack
     }
+
+
+pathToRootForProxy :: Dictionary -> Dictionary
+pathToRootForProxy =
+    fmap $ \def ->
+        if basename def == "200" then
+            def { pathToRoot = "/" }
+        else
+            def
 
 
 

@@ -1,51 +1,80 @@
 module Components.Header where
 
-import Template
+import Data.Text (Text)
+import Html hiding (title)
+import Html.Attributes
+import Html.Custom
+import Prelude hiding (div, span)
+import Shikensu.Utilities
 
 import qualified Components.Icon
 import qualified Data.Text as Text (concat)
+import qualified Shikensu (Metadata)
 
 
-template :: Partial
+-- 🍯
+
+
+template :: Shikensu.Metadata -> Html
 template obj =
-    let
-        parentPath = obj !~> "parentPath" :: Maybe Text
-        category   = obj ~> "category" :: Maybe String
+    header
+        [ cls "header" ]
+        [ container [] [ left obj, right ] ]
 
-        logoHref = Text.concat
-            [ obj !~> "pathToRoot"
-            , if obj !~> "basename" /= "index" then "../" else ""
+
+
+-- 👈
+
+
+left :: Shikensu.Metadata -> Html
+left obj =
+    div
+        [ cls "header__col header__col--left" ]
+        [ -- Logo
+          --
+          a
+            [ hrefRelative
+                obj
+                (if obj !~> "basename" /= "index" then "../" else "")
+            , cls
+                "header__logo"
             ]
-    in
-        header_
-            [ class_ "header" ] ↩
-            [ container_
-                [] ↩
-                [ div_
-                    [ class_ "header__col header__col--left" ] ↩
-                    [ a_
-                        [ href_ logoHref, class_ "header__logo" ] ↩
-                        [ "I.A." ]
+            [ text "I.A." ]
 
-                    , case category of
-                        Just cat ->
-                            span_
-                                [ class_ "header__cat" ] ↩
-                                [ toHtml cat ]
-                        Nothing ->
-                            ""
+        -- Category
+        --
+        , case obj ~> "category" of
+            Just cat ->
+                span
+                    [ cls "header__cat" ]
+                    [ text cat ]
+            Nothing ->
+                nothing
 
-                    , case parentPath of
-                        Just x ->
-                            a_
-                                [ href_ x, class_ "header__go-up", title_ "Go up" ] ↩
-                                [ Components.Icon.template "i-flash" obj ]
-                        Nothing ->
-                            ""
+        -- Lightning bolt
+        --
+        , case obj !~> "parentPath" of
+            Just x ->
+                a
+                    [ href x, cls "header__go-up"
+                    , title "Go up"
                     ]
+                    [ Components.Icon.template "i-flash" obj
+                    ]
+            Nothing ->
+                nothing
+        ]
 
-                , div_
-                    [ class_ "header__col header__col--right" ] ↩
-                    [ span_ "Steven Vandevelde" ]
-                ]
-            ]
+
+
+-- 👉
+
+
+right :: Html
+right =
+    div
+        [ cls "header__col header__col--right" ]
+        [ span
+            []
+            [ text "Steven Vandevelde" ]
+        ]

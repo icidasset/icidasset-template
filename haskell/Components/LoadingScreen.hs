@@ -1,29 +1,34 @@
 module Components.LoadingScreen where
 
-import Lucid.Base (makeAttribute, makeElement, with)
-import Template
+import Html
+import Html.Attributes
+import Prelude hiding (div)
+
+import qualified Shikensu (Metadata)
 
 
-template :: Partial
-template =
-    \_ ->
-        div_
-            [ class_ "loading-screen roughly-centered" ] ↩
-            [ svg_
-                [ class_ "spinner"
-                , height_ "29px"
-                , makeAttribute "viewBox" "0 0 30 30"
-                , width_ "29px"
-                ] ↩
-                [ with (makeElement "circle")
-                    [ class_ "spinner__path"
-                    , makeAttribute "cx" "15"
-                    , makeAttribute "cy" "15"
-                    , makeAttribute "fill" "none"
-                    , makeAttribute "r" "14"
-                    , makeAttribute "stroke-linecap" "round"
-                    , makeAttribute "stroke-width" "2"
-                    ] ↩
-                    []
-                ]
+-- 🍯
+
+
+template :: Shikensu.Metadata -> Html
+template _ =
+    div
+        [ cls "loading-screen roughly-centered" ]
+        [ svg
+            [ cls "spinner"
+            , height "29px"
+            , viewbox "0 0 30 30"
+            , width "29px"
             ]
+            [ circle
+                [ cls "spinner__path"
+                , attr "cx" "15"
+                , attr "cy" "15"
+                , attr "fill" "none"
+                , attr "r" "14"
+                , attr "stroke-linecap" "round"
+                , attr "stroke-width" "2"
+                ]
+                []
+            ]
+        ]
