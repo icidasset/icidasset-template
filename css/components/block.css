@@ -64,7 +64,10 @@
    */
   & .block__title {
     font-size: 1.125rem;
+    letter-spacing: -0.005em;
     margin: 0 0 2gr;
+    text-align: left;
+    text-transform: none;
 
     &.is-more-subtle {
       font-size: 1.025rem;
