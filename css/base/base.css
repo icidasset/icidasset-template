@@ -32,9 +32,11 @@ h6 {
 }
 
 h1 {
-  font-size: 2em;
-  letter-spacing: -0.005em;
-  margin: 0 0 3gr;
+  font-size: 1.95em;
+  letter-spacing: -0.0125em;
+  margin: 4gr 0 5gr;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 h2 {
