@@ -3,6 +3,7 @@ module Shikensu.Functions
     , frontmatterDef
     , lowerCaseBasename
     , lowerCaseBasenameDef
+    , pathToRootForProxy
     ) where
 
 import Data.ByteString (ByteString)
