@@ -1,6 +1,6 @@
 module Renderers.Markdown where
 
-import CMark (commonmarkToHtml)
+import CMark (commonmarkToHtml, optSmart)
 import Data.ByteString (ByteString)
 import Data.Text.Encoding (decodeUtf8, encodeUtf8)
 import Flow
@@ -15,4 +15,4 @@ renderer def = fmap markdown (content def)
 
 
 markdown :: ByteString -> ByteString
-markdown = decodeUtf8 .> commonmarkToHtml [] .> encodeUtf8
+markdown = decodeUtf8 .> commonmarkToHtml [optSmart] .> encodeUtf8

@@ -1,7 +1,7 @@
 blockquote {
   font-size: 1.05rem;
   font-style: italic;
-  margin: 0;
+  margin: 6gr 0 0;
   position: relative;
 
   & p {
@@ -26,6 +26,10 @@ blockquote {
 
   & p:first-child:before { content: "“"; left: -27px; }
   & p .end-quote-mark:after { content: "”"; right: -27px; }
+
+  & + p {
+    margin-bottom: 6gr;
+  }
 
 
 }
