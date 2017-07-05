@@ -14,8 +14,8 @@ import qualified Data.Text as Text (append, empty, replace, toLower)
 import qualified Shikensu (Metadata)
 
 
-template :: Shikensu.Metadata -> Html -> Html
-template obj child =
+template :: Html -> Shikensu.Metadata -> Html -> Html
+template additionalHeadNodes obj child =
     let
         workspace = case obj ~> "workingDirname" of
             Just x  -> x |> Text.replace "src/" "" |> Text.toLower
@@ -28,45 +28,7 @@ template obj child =
               --
               head
                 []
-                [ meta [ charset "utf-8" ] []
-                , meta [ httpEquiv "Content-Type", content "text/html; charset=utf-8" ] []
-                , meta [ httpEquiv "X-UA-Compatible", content "IE=edge" ] []
-                , meta [ name "viewport", content "width=device-width, initial-scale=1" ] []
-
-                , title
-                    []
-                    [ Text.append
-                            ( case obj ~> "title" of
-                                Just x -> Text.append x " – "
-                                Nothing -> ""
-                            )
-                            "I.A."
-
-                        |> text
-                    ]
-
-                , link
-                    [ rel "stylesheet"
-                    , hrefRelative obj "application.css"
-                    ]
-                    []
-
-                , link
-                    [ rel "stylesheet"
-                    , href $
-                        "https://fonts.googleapis.com/css?family=" <>
-                        "Playfair+Display:400,700|Nunito+Sans:400,600,700,400italic,700italic"
-                    ]
-                    []
-
-                , link
-                    [ rel "stylesheet"
-                    , href "//cdn.jsdelivr.net/font-hack/2.020/css/hack-extended.min.css"
-                    ]
-                    []
-
-                , favicons obj
-                ]
+                [ headNodes obj, additionalHeadNodes ]
 
             -- <body>
             --
@@ -80,6 +42,57 @@ template obj child =
         ]
 
         |> mconcat
+
+
+
+-- <Head>
+
+
+headNodes :: Shikensu.Metadata -> Html
+headNodes obj = mconcat
+    [ meta [ charset "utf-8" ] []
+    , meta [ httpEquiv "Content-Type", content "text/html; charset=utf-8" ] []
+    , meta [ httpEquiv "X-UA-Compatible", content "IE=edge" ] []
+    , meta [ name "viewport", content "width=device-width, initial-scale=1" ] []
+
+    , title
+        []
+        [ Text.append
+                ( case obj ~> "title" of
+                    Just x -> Text.append x " – "
+                    Nothing -> ""
+                )
+                "I.A."
+
+            |> text
+        ]
+
+    , link
+        [ rel "stylesheet"
+        , hrefRelative obj "application.css"
+        ]
+        []
+
+    , link
+        [ rel "stylesheet"
+        , href $
+            "https://fonts.googleapis.com/css?family=" <>
+            "Playfair+Display:400,700|Nunito+Sans:400,600,700,400italic,700italic"
+        ]
+        []
+
+    , link
+        [ rel "stylesheet"
+        , href "//cdn.jsdelivr.net/font-hack/2.020/css/hack-extended.min.css"
+        ]
+        []
+
+    , favicons obj
+    ]
+
+
+
+-- Favicons
 
 
 favicons :: Shikensu.Metadata -> Html
