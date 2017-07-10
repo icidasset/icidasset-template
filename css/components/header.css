@@ -14,7 +14,7 @@
   }
 
   & .container:after {
-    background-color: color($base06 a(.5));
+    background-color: #f3f3f3;
     bottom: 0;
     content: '';
     height: 1px;
