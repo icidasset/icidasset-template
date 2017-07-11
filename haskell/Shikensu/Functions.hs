@@ -4,6 +4,7 @@ module Shikensu.Functions
     , lowerCaseBasename
     , lowerCaseBasenameDef
     , pathToRootForProxy
+    , permalinkPages
     ) where
 
 import Data.ByteString (ByteString)
@@ -11,6 +12,7 @@ import Data.Frontmatter (IResult(..), parseFrontmatter)
 import Data.Maybe (fromMaybe)
 import Flow
 import Shikensu (Definition(..), Dictionary(..), Metadata)
+import Shikensu.Contrib (permalinkDef)
 
 import qualified Data.HashMap.Strict as HashMap (empty, union)
 import qualified Data.Text as Text (pack, toLower, unpack)
@@ -59,8 +61,17 @@ pathToRootForProxy =
             def
 
 
+permalinkPages :: [String] -> Dictionary -> Dictionary
+permalinkPages nonPermalinkedPages =
+    fmap $ \def ->
+        if basename def `elem` nonPermalinkedPages
+            then def { pathToRoot = "/" }
+            else permalinkDef "index" def
 
--- Helpers
+
+
+-- Helpers, Pt. 1
+-- Frontmatter
 
 
 extractFrontmatter :: Maybe ByteString -> (Maybe ByteString, Maybe ByteString)
@@ -79,4 +90,4 @@ frontmatterDecoder :: ByteString -> Metadata
 frontmatterDecoder yaml =
     yaml
         |> Yaml.decode
-        |> fromMaybe (HashMap.empty)
+        |> fromMaybe HashMap.empty
