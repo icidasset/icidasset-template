@@ -84,6 +84,10 @@ p, pre, ul, ol {
   margin: 0 0 2gr;
 }
 
+p img {
+  max-width: 100%;
+}
+
 p + ul,
 p + ol {
   margin-top: -1.25gr;
