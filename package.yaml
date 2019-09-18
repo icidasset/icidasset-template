@@ -1,32 +1,29 @@
 name: icidasset-template
-version: 2.0.0
-maintainer: Steven Vandevelde <icid.asset@gmail.com>
+version: 1.0.0
 
 
 dependencies:
-  - aeson == 1.*
+  - aeson
   - base >= 4.7 && < 5
-  - binary == 0.*
-  - bytestring == 0.*
-  - cmark == 0.*
-  - directory == 1.*
-  - flow == 1.*
-  - frontmatter == 0.1.*
-  - http-types == 0.*
-  - lucid == 2.*
-  - shikensu == 0.3.*
-  - text == 1.*
-  - unordered-containers == 0.2.*
-  - wai == 3.*
-  - wai-app-static == 3.*
-  - yaml == 0.8.*
+  - bytestring
+  - cmark
+  - flow
+  - frontmatter
+  - lucid
+  - protolude
+  - record-hasfield
+  - shikensu
+  - text
+  - unordered-containers
+  - yaml
 
 
 default-extensions:
   - ExtendedDefaultRules
+  - NoImplicitPrelude
   - OverloadedStrings
 
 
 library:
   source-dirs:
-    haskell
+    Haskell

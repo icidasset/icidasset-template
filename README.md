@@ -23,11 +23,26 @@ A generic template for my personal projects.
 
 ### Elm
 
-1. Add `icidasset-template/elm` to `source-directories` in the `elm-package.json` file.
+1. Add `icidasset-template/Elm` to `source-directories` in the `elm.json` file.
 2. Use the Elm modules as normal.
 
 
 ### Css
 
-1. Add the `"icidasset-template": "file:./icidasset-template"` dependency to `package.json` in the root directory.
-2. Import the template-css file (e.g. `@import "PATHTOROOT/icidasset-template/css/index"`).
+Compile the CSS using `tailwind`.
+
+```shell
+./node_modules/.bin/tailwind \
+    build "icidasset-template/Css/Main.css" \
+    --config "icidasset-template/Css/Tailwind.js" \
+    --output "${BUILD_DIR}/stylesheet.css"
+```
+
+
+
+
+## Notes
+
+### Haskell
+
+- Uses dot syntax for records (see https://hackage.haskell.org/package/record-dot-preprocessor for more info)

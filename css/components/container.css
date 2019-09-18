@@ -1,9 +1,0 @@
-.container {
-  margin: 0 auto;
-  max-width: 920px;
-  padding: 0 1.5gr;
-}
-
-body[workspace="writings"] .container {
-  max-width: calc(920px / 1.61803398875);
-}
