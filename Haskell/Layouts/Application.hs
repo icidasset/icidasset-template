@@ -21,7 +21,7 @@ template :: Html -> Shikensu.Metadata -> Html -> Html
 template additionalHeadNodes obj child =
     [ doctype
     , html
-        []
+        [ Html.Attributes.attr "lang" "en" ]
         [ -- <head>
           --
           head

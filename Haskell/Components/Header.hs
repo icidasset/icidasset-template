@@ -114,5 +114,5 @@ right :: Html
 right =
     brick
         [ style "letter-spacing: 0.2em" ]
-        [ "antialiased", "flex-1", "text-gray-500", "text-right", "text-xs", "uppercase" ]
+        [ "antialiased", "flex-1", "text-gray-600", "text-right", "text-xs", "uppercase" ]
         [ text "Steven Vandevelde" ]

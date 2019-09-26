@@ -1,9 +1,9 @@
 module Common where
 
-import Chunky (chunk)
+import Chunky (slab)
 import Data.Aeson (FromJSON, ToJSON)
 import Data.Text (Text)
-import Html (Html)
+import Html (Html, main)
 import Protolude
 import Shikensu (Metadata)
 import Shikensu.Utilities ((~>))
@@ -32,7 +32,9 @@ accentColor =
 
 container :: [Html] -> Html
 container =
-    chunk
+    slab
+        Html.main
+        []
         [ "max-w-5xl"
         , "mb-16"
         , "mx-auto"

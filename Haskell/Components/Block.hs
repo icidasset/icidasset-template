@@ -37,6 +37,15 @@ title classes =
 
 
 
+-- 🖼
+
+
+titleColorClass :: Text
+titleColorClass =
+    "text-indigo-700"
+
+
+
 -- FILLER
 
 
@@ -53,11 +62,11 @@ data Filler =
 filler :: Filler -> Html
 filler (Filler hideOnSmallScreen maybeHref icon label metadata) =
     let
-        opacity =
+        textColor =
             if Maybe.isJust maybeHref then
-                "opacity-100"
+                "text-indigo-500"
             else
-                "opacity-50"
+                "text-indigo-300"
     in
     slab
         Html.a
@@ -66,7 +75,7 @@ filler (Filler hideOnSmallScreen maybeHref icon label metadata) =
                 Just h      -> [ Html.Attributes.href h ]
                 Nothing     -> []
         )
-        [ "bg-gray-200"
+        [ "bg-indigo-100"
         , "flex-col"
         , "font-semibold"
         , "items-center"
@@ -75,7 +84,7 @@ filler (Filler hideOnSmallScreen maybeHref icon label metadata) =
         , "py-8"
         , "rounded"
         , "text-center"
-        , "text-gray-500"
+        , textColor
 
         --
         , "md:flex-1"
@@ -87,9 +96,9 @@ filler (Filler hideOnSmallScreen maybeHref icon label metadata) =
         , if hideOnSmallScreen then "hidden md:flex" else "flex"
         ]
         [ inline
-            [ "text-4xl", opacity ]
+            [ "text-4xl" ]
             [ Components.Icon.template icon metadata ]
         , inline
-            [ "block", "mt-2", opacity ]
+            [ "block", "mt-2" ]
             [ text label ]
         ]

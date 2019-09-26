@@ -17,7 +17,9 @@ import qualified Shikensu (Metadata)
 
 template :: Shikensu.Metadata -> Html -> Html
 template obj child =
-    chunk
+    slab
+        Html.main
+        []
         [ "max-w-2xl"
         , "mb-16"
         , "mx-auto"
