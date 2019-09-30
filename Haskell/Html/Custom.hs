@@ -70,11 +70,11 @@ hrefRelative obj suffix =
         |> href
 
 
-hrefRelativeDir :: Shikensu.Metadata -> Attribute
-hrefRelativeDir obj =
+hrefRelativeDir :: Shikensu.Metadata -> Shikensu.Metadata -> Attribute
+hrefRelativeDir parent obj =
     "/"
         |> Text.append (obj !~> "dirname" :: Text)
-        |> hrefRelative obj
+        |> hrefRelative parent
 
 
 
