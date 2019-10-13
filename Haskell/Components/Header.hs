@@ -73,20 +73,22 @@ left obj =
         --
         , case obj ~> "category" of
             Just cat ->
-                brick
-                    [ style "padding: 0 6px" ]
+                chunk
                     [ "bg-black"
                     , "font-medium"
                     , "font-serif"
-                    , "leading-loose"
+                    , "leading-snug"
                     , "ml-4"
                     , "mr-4"
-                    , "px-1"
+                    , "py-1"
                     , "rounded"
                     , "text-white"
                     , "text-xs"
                     , "tracking-wide"
                     , "uppercase"
+
+                    --
+                    , "icid__category"
                     ]
                     [ text cat ]
             Nothing ->
