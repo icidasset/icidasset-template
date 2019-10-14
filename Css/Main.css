@@ -30,6 +30,13 @@ body {
 }
 
 
+@screen dark {
+  body {
+    @apply bg-gray-900 text-gray-400;
+  }
+}
+
+
 
 /* Elements
    -------- */
@@ -86,6 +93,19 @@ ul a {
 }
 
 
+@screen dark {
+  hr {
+    @apply border-gray-800;
+  }
+
+  ol a,
+  p a,
+  ul a {
+    @apply border-gray-700;
+  }
+}
+
+
 
 /* Article
    ------- */
@@ -127,6 +147,11 @@ blockquote + p {
 
 @screen md {
   blockquote p::before { @apply block; }
+}
+
+
+@screen dark {
+  blockquote p::before { @apply text-gray-700; }
 }
 
 
@@ -179,6 +204,21 @@ pre code {
 
 .hljs-type {
   @apply text-pink-600;
+}
+
+
+@screen dark {
+  p code { @apply bg-gray-800 text-gray-500; }
+  pre code { @apply bg-gray-800; }
+
+  .hljs-comment { @apply text-gray-600; }
+
+  .hljs-keyword { @apply text-purple-400; }
+  .hljs-number, .hljs-params  { @apply text-orange-400; }
+  .hljs-string { @apply text-green-400; }
+  .hljs-symbol, .hljs-built_in { @apply text-yellow-400; }
+  .hljs-title { @apply text-teal-400; }
+  .hljs-type { @apply text-pink-400; }
 }
 
 

@@ -11,13 +11,16 @@ module.exports = {
     },
 
 
-    // Colors
-    // ------
-    // Extend default Tailwind color palette
+    // Extensions
+    // ----------
 
     extend: {
       colors: {
         lightning: "hsl(29.2, 83.2%, 74.3%)"
+      },
+
+      screens: {
+        "dark": { "raw": "(prefers-color-scheme: dark)" }
       }
     }
 

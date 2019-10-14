@@ -38,6 +38,11 @@ template obj =
         , "mx-auto"
         , "py-8"
 
+        -- Dark
+        --
+        , "dark:border-gray-800"
+
+        -- Workspace
         --
         , case workspace of
             "writings"  -> "max-w-2xl"
@@ -74,7 +79,7 @@ left obj =
         , case obj ~> "category" of
             Just cat ->
                 chunk
-                    [ "bg-black"
+                    [ "bg-gray-900"
                     , "font-medium"
                     , "font-serif"
                     , "leading-snug"
@@ -86,6 +91,10 @@ left obj =
                     , "text-xs"
                     , "tracking-wide"
                     , "uppercase"
+
+                    --
+                    , "dark:bg-gray-100"
+                    , "dark:text-gray-900"
 
                     --
                     , "icid__category"
@@ -116,5 +125,15 @@ right :: Html
 right =
     brick
         [ style "letter-spacing: 0.2em" ]
-        [ "antialiased", "flex-1", "text-gray-600", "text-right", "text-xs", "uppercase" ]
+        [ "antialiased"
+        , "flex-1"
+        , "text-gray-600"
+        , "text-right"
+        , "text-xs"
+        , "uppercase"
+
+        -- Dark
+        --
+        , "dark:text-gray-500"
+        ]
         [ text "Steven Vandevelde" ]

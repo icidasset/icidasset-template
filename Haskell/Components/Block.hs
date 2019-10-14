@@ -40,9 +40,11 @@ title classes =
 -- 🖼
 
 
-titleColorClass :: Text
-titleColorClass =
-    "text-indigo-700"
+titleColorClasses :: [ Text ]
+titleColorClasses =
+     [ "text-indigo-700"
+     , "dark:text-indigo-400"
+     ]
 
 
 
@@ -67,6 +69,12 @@ filler (Filler hideOnSmallScreen maybeHref icon label metadata) =
                 "text-indigo-500"
             else
                 "text-indigo-300"
+
+        darkTextColor =
+            if Maybe.isJust maybeHref then
+                "dark:text-indigo-300"
+            else
+                "dark:text-indigo-300 dark:opacity-50"
     in
     slab
         Html.a
@@ -91,6 +99,10 @@ filler (Filler hideOnSmallScreen maybeHref icon label metadata) =
         , "md:mb-0"
         , "md:mx-3"
         , "md:py-0"
+
+        --
+        , "dark:bg-indigo-800"
+        , darkTextColor
 
         --
         , if hideOnSmallScreen then "hidden md:flex" else "flex"
