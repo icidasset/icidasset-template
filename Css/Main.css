@@ -103,6 +103,10 @@ ul a {
   ul a {
     @apply border-gray-700;
   }
+
+  img {
+    filter: invert(15%);
+  }
 }
 
 
