@@ -4,7 +4,6 @@ import Chunky
 import Data.Text (Text)
 import Html
 import Html.Attributes
-import Html.Custom (nodeWithClass)
 import Protolude hiding (Left, Right)
 
 import qualified Components.Icon

@@ -26,8 +26,8 @@ nothing =
     ""
 
 
-raw :: Text -> Html
-raw =
+unencoded :: Text -> Html
+unencoded =
     Lucid.toHtmlRaw
 
 

@@ -32,5 +32,5 @@ template selector obj =
           , "';"
           ]
             |> Text.concat
-            |> raw
+            |> Html.unencoded
         ]

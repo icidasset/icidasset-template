@@ -45,5 +45,5 @@ template obj child =
 
         , script
             []
-            [ Html.raw "hljs.initHighlightingOnLoad();" ]
+            [ Html.unencoded "hljs.initHighlightingOnLoad();" ]
         ]

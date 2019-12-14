@@ -15,15 +15,6 @@ import qualified Shikensu (Metadata)
 -- NODES
 
 
-block = nodeWithClass "div" "block"
-blockList = nodeWithClass "div" "block__list"
-blockText = nodeWithClass "div" "block__text"
-blockTitleLvl1 = nodeWithClass "h1" "block__title"
-blockTitleLvl2 = nodeWithClass "h2" "block__title"
-blocks = nodeWithClass "div" "blocks"
-blocksRow = nodeWithClass "div" "blocks__row"
-
-
 highlightScript :: Text -> Html
 highlightScript name =
     let
@@ -40,7 +31,7 @@ markdown :: Text -> Html
 markdown text =
     text
         |> commonmarkToHtml [ optSmart ]
-        |> raw
+        |> unencoded
 
 
 markdownWithoutBlocks :: Text -> Html
@@ -49,7 +40,7 @@ markdownWithoutBlocks text =
         |> commonmarkToHtml [ optSmart ]
         |> Text.replace "<p>" ""
         |> Text.replace "</p>" ""
-        |> raw
+        |> unencoded
 
 
 relativeScript :: Text -> Text -> Html
@@ -75,16 +66,3 @@ hrefRelativeDir parent obj =
     "/"
         |> Text.append (obj !~> "dirname" :: Text)
         |> hrefRelative parent
-
-
-
--- ⚗️
-
-
-nodeWithClass :: Text -> Text -> [Attribute] -> [Html] -> Html
-nodeWithClass tagName rawklass attributes =
-    let
-        klass =
-            Text.concat [ " ", rawklass, " " ]
-    in
-        node tagName (cls klass : attributes)
