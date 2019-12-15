@@ -29,13 +29,15 @@ A generic template for my personal projects.
 
 ### Css
 
-Compile the CSS using `tailwind`.
+1. Add the `"icidasset-template": "file:./icidasset-template"` dependency to `package.json` in the root directory.
+2. Import the template-css file (e.g. `@import "PATH_TO_ROOT/icidasset-template/Css/Core"`).
+3. Use `postcss-cli` to compile your css file.
 
 ```shell
-./node_modules/.bin/tailwind \
-    build "icidasset-template/Css/Main.css" \
-    --config "icidasset-template/Css/Tailwind.js" \
-    --output "${BUILD_DIR}/stylesheet.css"
+@./node_modules/.bin/postcss \
+  "src/Css/Main.css" \
+  --output "build/application.css" \
+  --config "icidasset-template/Css/"
 ```
 
 

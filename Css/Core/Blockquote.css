@@ -1,0 +1,29 @@
+blockquote {
+  @apply italic text-xl;
+}
+
+
+blockquote p {
+  @apply mb-0 mt-20 relative;
+}
+
+
+blockquote p::before {
+  @apply -ml-8 -mt-px absolute hidden leading-none left-0 text-gray-400 text-5xl top-0;
+  content: "“";
+}
+
+
+blockquote + p {
+  @apply mb-20 mt-4 text-base;
+}
+
+
+@screen md {
+  blockquote p::before { @apply block; }
+}
+
+
+@screen dark {
+  blockquote p::before { @apply text-gray-700; }
+}

@@ -36,6 +36,7 @@ template obj =
         , "leading-relaxed"
         , "mb-8"
         , "mx-auto"
+        , "overflow-hidden"
         , "py-8"
 
         -- Dark
@@ -82,7 +83,7 @@ left obj =
                     [ "bg-gray-900"
                     , "font-medium"
                     , "font-serif"
-                    , "leading-snug"
+                    , "leading-normal"
                     , "ml-4"
                     , "mr-4"
                     , "py-1"
@@ -99,7 +100,11 @@ left obj =
                     --
                     , "icid__category"
                     ]
-                    [ text cat ]
+                    [
+                     chunk
+                      [ "-mt-px" ]
+                      [ text cat  ]
+                    ]
             Nothing ->
                 nothing
 

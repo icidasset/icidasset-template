@@ -1,0 +1,14 @@
+article {
+  @apply text-lg;
+}
+
+
+article img {
+  @apply rounded;
+}
+
+
+.almost-fullscreen {
+  @apply pb-8;
+  height: calc(100vh - 111px);
+}

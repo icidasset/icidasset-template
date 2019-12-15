@@ -28,6 +28,7 @@ content = Lucid.content_
 height = Lucid.height_
 href = Lucid.href_
 httpEquiv = Lucid.httpEquiv_
+id = Lucid.id_
 name = Lucid.name_
 rel = Lucid.rel_
 sizes = Lucid.sizes_

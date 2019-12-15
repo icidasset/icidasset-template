@@ -1,4 +1,4 @@
-module Utils exposing (..)
+module Common exposing (..)
 
 import Json.Decode
 

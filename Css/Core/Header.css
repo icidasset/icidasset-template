@@ -1,0 +1,12 @@
+.icid__category {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+
+@screen md {
+  .icid__category {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}

@@ -1,0 +1,38 @@
+li {
+  @apply mb-3;
+}
+
+
+article ol,
+article ul {
+  @apply max-w-xl;
+}
+
+
+article ol {
+  counter-reset: ol-counter;
+}
+
+
+article li {
+  @apply pl-8 relative;
+}
+
+
+article li::before {
+  @apply absolute left-0 text-gray-500 text-base;
+  line-height: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+article ol li::before {
+  content: counter(ol-counter) ".";
+  counter-increment: ol-counter;
+}
+
+
+article ul li::before {
+  content: "•";
+}

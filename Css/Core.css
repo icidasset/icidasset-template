@@ -1,0 +1,120 @@
+@charset "UTF-8";
+
+
+/* Imports
+   ------- */
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import "Core/Blockquote";
+@import "Core/Button";
+@import "Core/Code";
+@import "Core/Forms";
+@import "Core/Header";
+@import "Core/Lists";
+@import "Core/Misc";
+@import "Core/Spinner";
+
+
+
+/* Base
+   ---- */
+
+html {
+  font-size: 12.5px;
+}
+
+
+body {
+  @apply font-sans leading-relaxed px-5 pt-px text-gray-900;
+  text-rendering: optimizeLegibility;
+}
+
+
+@screen md {
+  html {
+    font-size: 14.5px;
+  }
+}
+
+
+@screen dark {
+  body {
+    @apply bg-gray-900 text-gray-400;
+  }
+}
+
+
+
+/* Elements
+   -------- */
+
+h1 {
+  @apply font-bold font-serif leading-tight mb-24 mt-20 text-3xl text-center tracking-tight uppercase;
+}
+
+
+h2 {
+  @apply font-bold font-serif mb-10 mt-16 text-2xl;
+}
+
+
+h3 {
+  @apply font-bold font-serif mb-5 mt-8 text-xl;
+}
+
+
+h4 {
+  @apply font-bold font-serif my-8;
+}
+
+
+hr {
+  @apply my-10;
+}
+
+
+ol,
+p,
+ul {
+  @apply my-8;
+}
+
+
+h1 + p,
+h2 + p,
+h3 + p {
+  margin-top: 0;
+}
+
+
+p + ol,
+p + ul {
+  @apply -mt-4;
+}
+
+
+ol a,
+p a,
+ul a {
+  @apply border-b border-gray-400;
+}
+
+
+@screen dark {
+  hr {
+    @apply border-gray-800;
+  }
+
+  ol a,
+  p a,
+  ul a {
+    @apply border-gray-700;
+  }
+
+  img {
+    filter: invert(15%);
+  }
+}

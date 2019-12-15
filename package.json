@@ -1,0 +1,17 @@
+{
+  "name": "icidasset-template",
+  "version": "1.0.0",
+  "dependencies": {
+    "@fullhuman/postcss-purgecss": "1.3.0",
+    "autoprefixer": "^9.7.2",
+    "postcss": "^7.0.23",
+    "postcss-cli": "^6.1.3",
+    "postcss-csso": "^4.0.0",
+    "postcss-import": "^12.0.1",
+    "postcss-nesting": "^7.0.1",
+    "purgecss": "^1.4.1",
+    "tailwindcss": "^1.1.3",
+    "tailwindcss-transforms": "^2.2.0",
+    "terser": "^4.4.0"
+  }
+}

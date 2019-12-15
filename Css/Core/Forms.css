@@ -1,0 +1,15 @@
+label {
+  @apply block font-bold mb-1 text-sm;
+}
+
+
+input {
+  @apply bg-transparent block border-b border-gray-300 py-3 w-full;
+}
+
+
+@screen dark {
+  input {
+    @apply border-gray-700;
+  }
+}

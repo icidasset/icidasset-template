@@ -1,5 +1,6 @@
 module Components.LoadingScreen where
 
+import Chunky
 import Html
 import Html.Attributes
 import Protolude hiding (div)
@@ -12,8 +13,12 @@ import qualified Shikensu (Metadata)
 
 template :: Shikensu.Metadata -> Html
 template _ =
-    div
-        [ cls "loading-screen roughly-centered" ]
+    chunk
+        [ "almost-fullscreen"
+        , "flex"
+        , "items-center"
+        , "justify-center"
+        ]
         [ svg
             [ cls "spinner"
             , height "29px"
