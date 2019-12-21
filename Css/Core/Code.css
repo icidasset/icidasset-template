@@ -8,6 +8,11 @@ pre code {
 }
 
 
+small code {
+  @apply text-sm;
+}
+
+
 .hljs-comment {
   @apply text-gray-500;
 }
