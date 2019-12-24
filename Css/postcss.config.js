@@ -18,7 +18,7 @@ module.exports = {
     isProduction
 
     ? require("@fullhuman/postcss-purgecss")({
-      content: [ "../build/**/*.html", "**/*.elm" ],
+      content: [ "../build/**/*.html", "../src/**/*.elm", "Elm/**/*.elm" ],
       css: [ "../build/*.css" ],
       defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
     })
