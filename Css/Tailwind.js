@@ -64,6 +64,8 @@ module.exports = {
     // Variants
     // --------
 
+    borderRadius: [ "first", "last", "responsive" ], 
+    borderWidth: [ "first", "last", "responsive" ],
     margin: [ "first", "last", "responsive" ]
 
   }

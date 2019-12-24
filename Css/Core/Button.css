@@ -1,3 +1,16 @@
 button {
-  @apply appearance-none border-2 border-green-400 font-bold leading-tight px-4 py-4 rounded text-green-400 text-xs uppercase;
+  @apply appearance-none border-2 border-green-400 cursor-pointer font-bold inline-block leading-tight px-4 py-4 rounded text-green-400 text-xs uppercase;
+
+  & > span {
+    @apply inline-block pt-px;
+  }
+}
+
+
+tiny-button {
+  @apply appearance-none border border-gray-500 cursor-pointer font-bold inline-block leading-snug px-2 py-1 rounded text-gray-500 text-xs uppercase;
+
+  & > span {
+    @apply inline-block pt-px;
+  }
 }
