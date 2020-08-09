@@ -18,10 +18,8 @@ view name pathToRoot =
     in
     svg
         [ class "fill-current"
-        , style
-            [ ( "height", "1em" )
-            , ( "width", "1em" )
-            ]
+        , style "height" "1em"
+        , style "width" "1em"
         ]
         [ use
             [ xlinkHref xh ]

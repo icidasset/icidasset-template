@@ -56,12 +56,12 @@ src_dir					:= project_dir + "/src"
 
 @elm:
 	echo "> Compiling Elm application"
-	cd {{project_dir}}; elm-make {{src_dir}}/App/Main.elm --output {{build_dir}}/application.js
+	cd {{project_dir}}; elm make {{src_dir}}/App/Main.elm --output {{build_dir}}/application.js
 
 
 @elm-prod:
 	echo "> Compiling Elm application (optimized)"
-	cd {{project_dir}}; elm-make {{src_dir}}/App/Main.elm --output {{build_dir}}/application.js
+	cd {{project_dir}}; elm make {{src_dir}}/App/Main.elm --output {{build_dir}}/application.js --optimize
 
 	{{bin}}/terser {{build_dir}}/application.js \
 		--output {{build_dir}}/application.tmp.js \
