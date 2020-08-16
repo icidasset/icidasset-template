@@ -1,9 +1,11 @@
 module.exports = {
 
-  plugins: [
+  plugins: [],
 
-    require("tailwindcss-transforms")(),
-
+  purge: [
+    "../build/**/*.html",
+    "../src/**/*.elm",
+    "Elm/**/*.elm"
   ],
 
   theme: {
@@ -29,22 +31,6 @@ module.exports = {
     },
 
 
-    // Transforms
-    // ----------
-
-    translate: {
-      "1/2": "50%",
-      "-1/2": "-50%",
-      "full": "100%",
-      "-full": "-100%",
-      "centered": ["-50%", "-50%"],
-      "put-on-top": ["-50%", "-100%"],
-    },
-
-    transformOrigin: {},
-    perspectiveOrigin: {},
-
-
     // Extensions
     // ----------
 
@@ -59,12 +45,13 @@ module.exports = {
     }
 
   },
+
   variants: {
 
     // Variants
     // --------
 
-    borderRadius: [ "first", "last", "responsive" ], 
+    borderRadius: [ "first", "last", "responsive" ],
     borderWidth: [ "first", "last", "responsive" ],
     margin: [ "first", "last", "responsive" ]
 
