@@ -6,7 +6,7 @@ module.exports = {
   plugins: [
 
     require("postcss-import"),
-    require("tailwindcss")("./Css/Tailwind.js"),
+    require("tailwindcss")("./icidasset-template/Css/Tailwind.js"),
     require("postcss-nesting"),
     require("autoprefixer"),
 
@@ -14,8 +14,8 @@ module.exports = {
     // --------
 
     isProduction
-    ? require("postcss-csso")
-    : identity,
+      ? require("postcss-csso")
+      : identity,
 
   ]
 }
