@@ -15,7 +15,7 @@ import Protolude
 import Shikensu (Definition(..), Dictionary(..), Metadata)
 import Shikensu.Contrib (permalinkDef)
 
-import qualified Data.HashMap.Strict as HashMap (empty, union)
+import qualified Data.Aeson.KeyMap as KeyMap (empty, union)
 import qualified Data.Text as Text (pack, toLower, unpack)
 import qualified Data.Yaml as Yaml (decode)
 
@@ -30,7 +30,7 @@ frontmatter = map frontmatterDef
 frontmatterDef :: Definition -> Definition
 frontmatterDef def =
     let
-        union         = flip HashMap.union (metadata def)
+        union         = flip KeyMap.union (metadata def)
         (yaml, text)  = extractFrontmatter (content def)
     in
         def {
@@ -92,4 +92,4 @@ frontmatterDecoder :: ByteString -> Metadata
 frontmatterDecoder yaml =
     yaml
         |> Yaml.decode
-        |> fromMaybe HashMap.empty
+        |> fromMaybe KeyMap.empty

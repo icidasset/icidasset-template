@@ -8,7 +8,8 @@ import Types
 
 import qualified Data.ByteString as BS (empty)
 import qualified Data.ByteString.Lazy as BS.Lazy (toStrict)
-import qualified Data.HashMap.Strict as HashMap (lookup)
+import qualified Data.Aeson.Key as Key
+import qualified Data.Aeson.KeyMap as KeyMap (lookup)
 import qualified Lucid.Base as Lucid (renderBS, toHtmlRaw)
 
 
@@ -20,11 +21,11 @@ catalogRenderer catalog def =
     let
         name =
             if not (null $ dirname def) then
-                dirname def
+                Key.fromString (dirname def)
             else
-                basename def
+                Key.fromString (basename def)
 
-        template = HashMap.lookup name catalog
+        template = KeyMap.lookup name catalog
     in
         case template of
             Just t -> renderer t def
